@@ -108,7 +108,7 @@ text-align: center;
             <a class="nav-link" href="#">Manage Rubrics</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="#">Report</a>
+            <a class="nav-link" href="reportStu">Report</a>
           </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">

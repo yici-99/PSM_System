@@ -2,19 +2,16 @@
 
 @section('table')
 <center>
-<h1>FYP CARNIAL MARKS</h1>
+<h1>Student List</h1>
 
 <center>
 <table class="table" style="width:75%">
   <thead class="thead-dark">
     <tr>
-      <th scope="col">No</th>
-      <th scope="col">NAME</th>
       <th scope="col">MATRIX ID</th>
-      <th scope="col">SUPERVISOR</th>
-      <th scope="col">FINAL YEAR PROJECT TITLE</th>
-      <th scope="col">TOTAL MARKS</th>
-      <th scope="col">ASSIGN INDUSTRY</th>
+      <th scope="col">NAME</th>
+      <th scope="col">ACTION</th>
+      
     </tr>
   </thead>
   <tbody>
@@ -33,5 +30,4 @@
   </tbody>
 </table>
 <center>
-
 @endsection
