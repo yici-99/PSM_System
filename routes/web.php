@@ -17,8 +17,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/master', function () {
-    return view('master');
+Route::get('/masterS', function () {
+    return view('masterS');
+});
+
+Route::get('/masterStu', function () {
+    return view('masterStu');
+});
+
+Route::get('/masterC', function () {
+    return view('masterC');
 });
 
 Route::get('/main', function () {
