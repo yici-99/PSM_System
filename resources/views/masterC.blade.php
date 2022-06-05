@@ -113,6 +113,9 @@ text-align: center;
           <li class="nav-item">
             <a class="nav-link" href="">Manage Rubric</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Manage Evaluation</a>
+          </li>
           <li class="nav-item active">
             <a class="nav-link" href="reportMainC">Manage Report</a>
           </li>
