@@ -38,4 +38,8 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
+Route::get('/svEvaluate', function () {
+    return view('svEvaluate');
+});
+
 require __DIR__.'/auth.php';
