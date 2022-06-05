@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//Main
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -29,13 +31,30 @@ Route::get('/masterC', function () {
     return view('masterC');
 });
 
-Route::get('/main', function () {
-    return view('ResultMain');
-});
-
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
+
+//Generate Top 20
+Route::get('/main', function () {
+    return view('ResultMain');
+});
+
+//Generate Report
+Route::get('/reportMainC', function () {
+    return view('/report/reportMainC');
+});
+
+Route::get('/studentListC', function () {
+    return view('/report/studentListC');
+});
+
+Route::get('/reportOverview', function () {
+    return view('/report/reportOverview');
+});
+
+Route::get('/studentListS', function () {
+    return view('/report/studentListS');
+});

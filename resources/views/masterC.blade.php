@@ -108,13 +108,13 @@ text-align: center;
             <a class="nav-link" href="#">Manage Student's Profile</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Manage Supervisor's Profile</a>
+            <a class="nav-link" href="">Manage Supervisor's Profile</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Manage Rubric</a>
+            <a class="nav-link" href="">Manage Rubric</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="#">Manage Report</a>
+            <a class="nav-link" href="reportMainC">Manage Report</a>
           </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
@@ -141,6 +141,7 @@ text-align: center;
   <img src="https://www.ump.edu.my/download/logo-ump-jawi-2021.png" alt="Italian Trulli"  width="300" height="150"> 
       @yield('table')
       @yield('form')
+      @yield('menu')
 
   <script>
     function openNav() {
