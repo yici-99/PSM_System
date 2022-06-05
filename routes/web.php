@@ -51,10 +51,22 @@ Route::get('/studentListC', function () {
     return view('/report/studentListC');
 });
 
+Route::get('/studentListS', function () {
+    return view('/report/studentListS');
+});
+
 Route::get('/reportOverview', function () {
     return view('/report/reportOverview');
 });
 
-Route::get('/studentListS', function () {
-    return view('/report/studentListS');
+Route::get('/reportC', function () {
+    return view('/report/reportC');
+});
+
+Route::get('/reportS', function () {
+    return view('/report/reportS');
+});
+
+Route::get('/reportStu', function () {
+    return view('/report/reportStu');
 });

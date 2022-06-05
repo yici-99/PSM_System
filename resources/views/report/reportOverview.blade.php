@@ -1,5 +1,5 @@
 @extends('masterC')
 
 @section('table')
-Hihi2
+overview
 @endsection
