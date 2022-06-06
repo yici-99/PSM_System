@@ -247,7 +247,7 @@ font-size: 18px;
         <a class="button" href="">Report</a>
         <a class="button" href="">Evaluation</a>
         <a class="button" href="">Rubric</a>
-        <a class="button" href="">Supervisor's Profile</a>
+        <a class="button" href="/smainpage">Student's Profile</a>
     </div>
 </header>
 
@@ -276,6 +276,7 @@ function checklogout(){
 
 @yield('table')
 @yield('form')
+@yield('content')
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
