@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EvaluationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,11 +36,19 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::get('/svEvaluate', function () {
-    return view('svEvaluate');
+
+//Manage Evaluation
+Route::get('/evMenu', function () {
+    return view('/evaluation/evMenu');
 });
 
-require __DIR__.'/auth.php';
+Route::get('/svView', function () {
+    return view('/evaluation/svView');
+});
+
+Route::get('/deadline', [EvaluationController::class, 'deadline']);
+Route::post('/deadline', [EvaluationController::class, 'storeDeadline']);
+Route::get('/svEdit', [EvaluationController::class, 'svEdit']);
 
 //Generate Top 20
 Route::get('/main', function () {
@@ -74,3 +83,6 @@ Route::get('/reportS', function () {
 Route::get('/reportStu', function () {
     return view('/report/reportStu');
 });
+
+
+require __DIR__.'/auth.php';

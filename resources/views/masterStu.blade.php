@@ -5,6 +5,9 @@
 <title>PSM Evaluation</title>
 <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <style>
 body{
@@ -15,9 +18,9 @@ fon-family: "roboto",sans-serif;
  header{
 position: fixed;
 background-color: #000000;
-padding:20px;
+padding:5px;
 width:100%;
-height:30px;
+height:70px;
 }
 
 .left h3 {
@@ -46,7 +49,7 @@ color: #1DC4E7;
   font-size: 18px;
   margin-left:1%;
   margin-right:3%;
-  margin-top:-1%;
+  margin-top:-1.5%;
 }
 
 
@@ -119,9 +122,9 @@ z-index:1;
 color: #fff;
 position: fixed;
 cursor: pointer;
-left: 400px;
+left: 420px;
 font-size: 20px;
-margin: 5px 0;
+margin: 10px 0;
 transition-property:color;
 }
 
