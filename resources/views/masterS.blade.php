@@ -276,8 +276,6 @@ function checklogout(){
 
 @yield('table')
 @yield('form')
-<<<<<<< HEAD
-@yield('content')
 =======
 @yield('menu')
 >>>>>>> 09f9ecb0ed7c78378e4ee2713fc2818e6ac43f74
