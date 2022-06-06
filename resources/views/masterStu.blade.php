@@ -1,240 +1,308 @@
 <!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<title>PSM Evaluation</title>
+<link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+</head>
 <style>
-
-
-.active {
-  background-color: #04AA6D;
+body{
+margin:0;
+padding:0;
+fon-family: "roboto",sans-serif;
+}
+ header{
+position: fixed;
+background-color: #000000;
+padding:20px;
+width:100%;
+height:30px;
 }
 
-.site-footer {
-  background: orange;
-  bottom: 0;
+.left h3 {
+color: #fff;
+margin:0;
+text-transform:uppercase;
+font-size:22px;
+font-weight:900;
 }
 
-#footer-content {
-  background: #FFD580;
-  bottom: 0;
+.left span{
+color: #1DC4E7;
 }
 
-
-  .sidebar {
-  height: 100%;
-  width: 0;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: orange;
-  overflow-x: hidden;
-  transition: 0.5s;
-  padding-top: 60px;
+.button:hover{
+  color:orange;
 }
 
-.sidebar a {
-  padding: 8px 8px 8px 32px;
-  text-decoration: none;
-  font-size: 25px;
-  color: #818181;
-  display: block;
-  transition: 0.3s;
-}
-
-.sidebar a:hover {
-  color: #f1f1f1;
-}
-
-.sidebar .closebtn {
-  position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 36px;
-  margin-left: 50px;
-}
-
-.openbtn {
-  font-size: 20px;
-  cursor: pointer;
-  background-color: #111;
+.topnav a {
+  float: right;
+  vertical-align: top;
   color: white;
-  padding: 10px 15px;
-  border: none;
+  text-align:center;
+  font-family: Arial;
+  text-decoration: none;
+  font-size: 18px;
+  margin-left:1%;
+  margin-right:3%;
+  margin-top:-1%;
 }
 
-.openbtn:hover {
-  background-color: #444;
+
+.logout_btn{
+pading: 5px;
+background: #19B3D3;
+text-decoration:none;
+float:right;
+margin-top : -30px;
+margin-right: 40px;
+border-radius:2px;
+font-size : 15px;
+font-weight: 600;
+color: #fff;
+transition:0.05s;
+transition-property: background;
 }
 
-#main {
-  transition: margin-left .5s;
-  padding: 16px;
+.logout_btn:hover{
+background: #0D9DBB;
 }
 
-footer {
-    background: #fed8b1;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    padding: 20px;
+.sidebar{
+background-color: #FF9900;
+margin-top:70px;
+padding-top: 30px;
+position: fixed;
+left: 0;
+width: 250px;
+height: 150%;
+transition: 0.5s;
+transition-property: left;
 }
 
-.center {
-text-align: center;
+.sidebar .profile_image{
+width: 100px;
+height:100px;
+border-radius:100px;
+margin-bottom:10px;
 }
 
-.right {
-  text-align: right;
+.sidebar h4{
+color: #fff;
+margin-top:0;
+maqrgin-botton: 20px;
 }
 
-</style>    
-<html>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-  <head>
+.sidebar a{
+color: #fff;
+display: block;
+width:100%;
+line-height:60px;
+text-decoration: none;
+padding-left: 40px;
+box-sizing: border-box;
+transiton: 0.5s;
+transition-property: background;
+}
 
-    <nav class="navbar navbar-expand-lg  navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">
-    <img src="https://d1yjjnpx0p53s8.cloudfront.net/styles/logo-thumbnail/s3/102011/universiti_malaysia_pahang_badge.png?itok=SifiFOB-" width="30" height="30" class="d-inline-block align-top" alt="">
-    UMP
-     </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+.sidebar a:hover{
+background: #19B3C3;
+}
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item ">
-            <a class="nav-link" href="#">Supervisors' Profile</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Manage Rubrics</a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="reportStu">Report</a>
-          </li>
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
-      </div>
-    </nav>
-  </head>
+.sidebar i{
+padding-right:10px;
+}
 
+label #sidebar_btn{
+z-index:1;
+color: #fff;
+position: fixed;
+cursor: pointer;
+left: 400px;
+font-size: 20px;
+margin: 5px 0;
+transition-property:color;
+}
 
+label #sidebar_btn:hover{
+color: #19B3D3;
+}
 
-  <body> 
-  <div id="mySidebar" class="sidebar">
-    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-    <a href="#">About</a>
-    <a href="#">Services</a>
-    <a href="#">Clients</a>
-    <a href="#">Contact</a>
-  </div>
-  <div id="main">
-    <button class="openbtn" onclick="openNav()">☰ PROFILE MENU</button> 
-  </div>  
-  <img src="https://www.ump.edu.my/download/logo-ump-jawi-2021.png" alt="Italian Trulli"  width="300" height="150"> 
-      @yield('table')
-      @yield('form')
+#check:checked ~ .sidebar{
+left: -190px;
+}
 
-  <script>
-    function openNav() {
-      document.getElementById("mySidebar").style.width = "250px";
-      document.getElementById("main").style.marginLeft = "250px";
-    }
+#check:checked ~ .sidebar a span{
+display:none;
+}
 
-    function closeNav() {
-      document.getElementById("mySidebar").style.width = "0";
-      document.getElementById("main").style.marginLeft= "0";
-    }
-  </script>   
+#check:checked ~ .sidebar a{
+font-size:20px;
+margin-left:160px;
+width:80px;
+}
 
-      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-  </body>
+.content{
+margin-left:250px;
+margin-top:0px;
+padding-top: 30px;
+background: #FFFFFF;
+background-position: center;
+background-size: cover;
+heighr: 200vh;
+transition: 0.5s;
+}
 
-<!-- Footer -->
-<footer class="page-footer font-small blue pt-4">
+#check:checked ~ .content {
+margin-left:60px;
+}
 
-  <!-- Footer Links -->
-  <div class="container-fluid text-center text-md-left">
+#check{
+display: none;
+}
 
-    <!-- Grid row -->
-    <div class="row">
+table2,th1{
+ border: no border;
+text-align:left;
+font-size:11px;
+vertical-align: top;
+}
+.fa {
+  padding: 5px;
+  font-size: 20px;
+  width: 20px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+}
+.fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+.fa-linkedin {
+  background: #007bb5;
+  color: white;
+}
+.fa-instagram {
+  background: #f09433; 
+background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); 
+background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888',GradientType=1 );
+  color: white;
+}
+.fa-twitter {
+  background: #55ACEE;
+  color: white;
+}
+footer{
+bottom:0;
+background-color: #FFE4B5;
+background-size: cover;
+border-top: 1px solid #e5e5e5;
+font-size: 13px;
+    clear: both;
+    display: block;
+            width: 100%;
+            height: 200px;
+}
 
-      <!-- Grid column -->
-      <div class="col-md-6 mt-md-0 mt-3">
+div3{
+margin-top:70px;
+padding-top: 30px;
+position: fixed;
+background-color: #FFE4B5;
+font-size: 18px;
+            width: 100%;
+            height: 300px;
+}
+#rcorners {
+  border-radius: 25px;
+  border: 2px solid #000000;
+  padding: 20px; 
+  width: 150px;
+  height: 180px;  
+}
 
-        <!-- Content -->
-        <h5 class="text-uppercase">Footer Content</h5>
-        <p>Here you can use rows and columns to organize your footer content.</p>
-
-      </div>
-      <!-- Grid column -->
-
-      <hr class="clearfix w-100 d-md-none pb-3">
-
-      <!-- Grid column -->
-      <div class="col-md-3 mb-md-0 mb-3">
-
-        <!-- Links -->
-        <h5 class="text-uppercase">Links</h5>
-
-        <ul class="list-unstyled">
-          <li>
-            <a href="#!">Link 1</a>
-          </li>
-          <li>
-            <a href="#!">Link 2</a>
-          </li>
-          <li>
-            <a href="#!">Link 3</a>
-          </li>
-          <li>
-            <a href="#!">Link 4</a>
-          </li>
-        </ul>
-
-      </div>
-      <!-- Grid column -->
-
-      <!-- Grid column -->
-      <div class="col-md-3 mb-md-0 mb-3">
-
-        <!-- Links -->
-        <h5 class="text-uppercase">Links</h5>
-
-        <ul class="list-unstyled">
-          <li>
-            <a href="#!">Link 1</a>
-          </li>
-          <li>
-            <a href="#!">Link 2</a>
-          </li>
-          <li>
-            <a href="#!">Link 3</a>
-          </li>
-          <li>
-            <a href="#!">Link 4</a>
-          </li>
-        </ul>
-
-      </div>
-      <!-- Grid column -->
-
+</style>
+  <body>
+      
+    <input type="checkbox" id="check">
+<header>
+  <label for ="check">
+    <i class="fas fa-bars" id="sidebar_btn"></i>
+  </label>
+  <!--left-->
+  <div class="left">
+    <h3>University   Malaysia <span> Pahang</span></h3>
+</div>
+    <!--right-->
+    <div class="topnav">
+        <a class="button" href="/">Logout</a>
+        <a class="button" href="">Report</a>
+        <a class="button" href="">Rubric</a>
+        <a class="button" href="">Supervisor's Profile</a>
     </div>
-    <!-- Grid row -->
+</header>
 
-  </div>
-  <!-- Footer Links -->
+<div class="sidebar">
+  <center>
 
-  <!-- Copyright -->
-  <div class="footer-copyright text-center py-3">© 2020 Copyright:
-    <a href="/"> MDBootstrap.com</a>
-  </div>
-  <!-- Copyright -->
+<script>
+function checklogout(){
+  return confirm('Are you sure to Logout?');
+}
+</script>
 
+</center>
+<a href="#"><i class="far fa-id-card"></i></a>
+<a href="#"><i class="fas fa-phone"></i></a>
+<a href="#"><i class="fas fa-envelope-open-text"></i></a>
+<div style="background-color:#000000; height:3px;"></div>
+  <a href="#"><i class="fas fa-folder-open"></i></a>
+  <a href="#" onclick="return checklogout()"><i  class="fas fa-door-open"></i><span>Logout</span></a>
+</div>
+
+<div class="content">
+<br><br><br>
+<img src = " {{ URL('/umplogo.png') }} " alt="ump" width="200" height="100">
+<br><br><br>
+
+@yield('table')
+@yield('form')
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+<footer>
+<p>&emsp;&emsp;&emsp;&emsp; ABOUT UMP</p><br>
+<table2>
+<tr>
+<th1 rowspan="2">&emsp;&emsp; <i style='font-size:21px' class='fas'>&#xf3c5;</i></th1>
+<th1> &emsp;Universiti Malaysia Pahang<br>
+&emsp;&emsp;&emsp;&emsp;&emsp;26600 Pekan<br>
+&emsp;&emsp;&emsp;&emsp;&emsp;Pahang,Malaysia</th1>
+<th1 rowspan="2">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<i style='font-size:21px' class='fas'>&#xf2a0;</i></th1>
+<th1> &emsp; +609 424 5000</th1>
+<th1 rowspan="2"> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<i style='font-size:21px' class='fas'>&#xf658;</i></th1>
+<th1> &emsp; pro@ump.edu.my</th1>
+</tr>
+
+<tr>
+<th1 rowspan="2">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<i style="font-size:21px" class="fa">&#xf1ac;</i></th1>
+<th1>&emsp; +609 424 5055 </th1>
+<th1 rowspan="2">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<i style='font-size:21px' class='far'>&#xf017;</i></th1>
+<th1>&emsp; Monday - Friday : 8:00 a.m. - 5:00p.m.</th1>
+</tr>
+</table2>
+<br><br>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+&emsp;&emsp;&emsp;&emsp;<a href="https://www.facebook.com/universiti.malaysia.pahang/" class="fa fa-facebook"></a>
+&emsp;&emsp;<a href="https://www.instagram.com/umpmalaysia/?hl=en" class="fa fa-instagram"></a>
+&emsp;&emsp;<a href="https://twitter.com/umpmalaysia?lang=en" class="fa fa-twitter"></a>
+&emsp;&emsp; <a href="https://www.linkedin.com/school/universiti-malaysia-pahang/" class="fa fa-linkedin"></a>
 </footer>
-<!-- Footer -->
-
+</div>
+</body>
 </html>

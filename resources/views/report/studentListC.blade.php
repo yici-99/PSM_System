@@ -11,7 +11,6 @@
       <th scope="col">MATRIX ID</th>
       <th scope="col">NAME</th>
       <th scope="col">ACTION</th>
-      
     </tr>
   </thead>
   <tbody>
