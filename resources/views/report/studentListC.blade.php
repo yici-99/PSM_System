@@ -3,7 +3,10 @@
 @section('table')
 <center>
 <h1>Student List</h1>
+<div>
+<label for="type">Report Type:</label>
 
+</div>
 <center>
 <table class="table" style="width:75%">
   <thead class="thead-dark">
