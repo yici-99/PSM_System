@@ -123,7 +123,7 @@ z-index:1;
 color: #fff;
 position: fixed;
 cursor: pointer;
-left: 430px;
+left: 420px;
 font-size: 20px;
 margin: 10px 0;
 transition-property:color;
