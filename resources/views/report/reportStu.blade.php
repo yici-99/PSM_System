@@ -11,7 +11,7 @@
       }
     .label5{
         display: inline-block;
-        width: 150px;
+        width: 300px;
         text-align: right;
         padding-right:200px;
       }
@@ -25,7 +25,7 @@
         border-radius:5px;
         height:30px;
         float:right;
-        background-color: #C5C5C5; /* For browsers that do not support gradients */
+        background-color: #C5C5C5; 
         background-image: linear-gradient(#DCDCDC, #AEAEAE, #DCDCDC);
       }
       .btn5:hover {
