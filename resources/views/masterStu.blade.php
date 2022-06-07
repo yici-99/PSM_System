@@ -245,7 +245,7 @@ font-size: 18px;
         <a class="button" href="/">Logout</a>
         <a class="button" href="">Report</a>
         <a class="button" href="">Rubric</a>
-        <a class="button" href="">Supervisor's Profile</a>
+        <a class="button" href="/searchsupervisor">Supervisor's Profile</a>
     </div>
 </header>
 

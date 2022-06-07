@@ -89,3 +89,30 @@ Route::get('/studentListS', [reportController::class,'studentList']);
 
 
 require __DIR__.'/auth.php';
+
+//Manage Student
+Route::get('/searcsupervisor', function () {
+    return view('/Student/searchsupervisor');
+});
+
+Route::get('/editprofile', function () {
+    return view('/Student/editprofile');
+});
+Route::get('/editprofile', function () {
+    return view('/Student/viewprofile');
+});
+
+
+
+//Manage Coordinator
+Route::get('/Cmainpage', function () {
+    return view('/Coordinator/Cmainpage');
+});
+Route::get('/psmprofile', function () {
+    return view('/Coordinator/psmprofile');
+});
+
+//Manage Supervisor
+Route::get('/smainpage', function () {
+    return view('/supervisor/smainpage');
+});
