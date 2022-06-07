@@ -102,20 +102,11 @@ h5{
             </tr>
           </thead>
           <tbody>
+            @foreach($students as $student)
           <tr>
-            <td scope="row">1</td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td scope="row">2</td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td scope="row">3</td>
-            <td></td>
-            <td></td>
+            <td scope="row">{{$student->studentID}}</td>
+            <td>{{$student->studentName}}</td>
+            <td><a href="">View</td>
           </tr>
           </tbody>
         </table>

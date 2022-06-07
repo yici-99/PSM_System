@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EvaluationController;
+use App\Http\Controllers\reportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -83,6 +84,8 @@ Route::get('/reportS', function () {
 Route::get('/reportStu', function () {
     return view('/report/reportStu');
 });
+
+Route::get('/studentListS', [reportController::class,'studentList']);
 
 
 require __DIR__.'/auth.php';
