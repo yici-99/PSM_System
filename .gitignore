@@ -13,3 +13,6 @@ yarn-error.log
 /.idea
 /.vscode
 vendor/bin/sail
+vendor/composer/autoload_classmap.php
+vendor/composer/autoload_classmap.php
+vendor/composer/autoload_static.php

@@ -243,7 +243,7 @@ font-size: 18px;
     <!--right-->
     <div class="topnav">
         <a class="button" href="/">Logout</a>
-        <a class="button" href="">Report</a>
+        <a class="button" href="/reportS">Report</a>
         <a class="button" href="">Rubric</a>
         <a class="button" href="/searchsupervisor">Supervisor's Profile</a>
     </div>

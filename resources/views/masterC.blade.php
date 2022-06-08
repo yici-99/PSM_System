@@ -243,9 +243,9 @@ font-size: 18px;
     <!--right-->
     <div class="topnav">
         <a class="button" href="/">Logout</a>
-        <a class="button" href="">Generate Report</a>
+        <a class="button" href="/reportMainC">Generate Report</a>
         <a class="button" href="">Rubric</a>
-        <a class="button" href="">Deadline</a>
+        <a class="button" href="deadline">Deadline</a>
         <a class="button" href="/searchsvlist">Supervisor's Profile</a>
         <a class="button" href="/searchstudent">Student's Profile</a>
         <a class="button" href="/searchpsmtitle">PSM Title List</a>
