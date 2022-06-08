@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInita11772c80707fa533434d566672f7aea
+class ComposerStaticInit4e61d366072ca2e1c1e3846ae33fecd9
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -184,8 +184,8 @@ class ComposerStaticInita11772c80707fa533434d566672f7aea
         'phpDocumentor\\Reflection\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
-            1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
-            2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
+            1 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
+            2 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
         ),
         'Whoops\\' => 
         array (
@@ -349,8 +349,8 @@ class ComposerStaticInita11772c80707fa533434d566672f7aea
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-factory/src',
-            1 => __DIR__ . '/..' . '/psr/http-message/src',
+            0 => __DIR__ . '/..' . '/psr/http-message/src',
+            1 => __DIR__ . '/..' . '/psr/http-factory/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -558,11 +558,15 @@ class ComposerStaticInita11772c80707fa533434d566672f7aea
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Http\\Requests\\Auth\\LoginRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Auth/LoginRequest.php',
+        'App\\Mail\\DeadlineReminder' => __DIR__ . '/../..' . '/app/Mail/DeadlineReminder.php',
+        'App\\Models\\Deadline' => __DIR__ . '/../..' . '/app/Models/Deadline.php',
         'App\\Models\\Report' => __DIR__ . '/../..' . '/app/Models/Report.php',
         'App\\Models\\Student' => __DIR__ . '/../..' . '/app/Models/Student.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Models\\industry' => __DIR__ . '/../..' . '/app/Models/industry.php',
         'App\\Models\\psm1result' => __DIR__ . '/../..' . '/app/Models/psm1result.php',
+        'App\\Models\\psm2result' => __DIR__ . '/../..' . '/app/Models/psm2result.php',
+        'App\\Models\\ptaresult' => __DIR__ . '/../..' . '/app/Models/ptaresult.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
@@ -5905,10 +5909,10 @@ class ComposerStaticInita11772c80707fa533434d566672f7aea
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInita11772c80707fa533434d566672f7aea::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInita11772c80707fa533434d566672f7aea::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInita11772c80707fa533434d566672f7aea::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInita11772c80707fa533434d566672f7aea::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit4e61d366072ca2e1c1e3846ae33fecd9::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit4e61d366072ca2e1c1e3846ae33fecd9::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit4e61d366072ca2e1c1e3846ae33fecd9::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit4e61d366072ca2e1c1e3846ae33fecd9::$classMap;
 
         }, null, ClassLoader::class);
     }
