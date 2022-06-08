@@ -2,7 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EvaluationController;
+
 use App\Http\Controllers\reportController;
+use Illuminate\Support\Facades\Mail;
+use App\Models\Deadline;
+use App\Http\Controllers\usercontroller;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,15 +21,14 @@ use App\Http\Controllers\reportController;
 
 //Main
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 Route::get('/masterS', function () {
+
     return view('masterS');
 });
 
-Route::get('/masterStu', function () {
+Route::post('/masterStu', function () {
     return view('masterStu');
 });
 
@@ -33,23 +36,49 @@ Route::get('/masterC', function () {
     return view('masterC');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::get('/', function () {
+    return view('home');
+});
 
 
 //Manage Evaluation
-Route::get('/evMenu', function () {
-    return view('/evaluation/evMenu');
+Route::get('/svMenu', function () {
+
+    $deadlinePsm1 = Deadline::select(['deadlines.*'])
+                            ->where('psmType', '=', 'PSM 1')
+                            ->latest('created_at')->first();
+
+    $deadlinePsm2 = Deadline::select(['deadlines.*'])
+                            ->where('psmType', '=', 'PSM 2')
+                            ->latest('created_at')->first();
+
+    $deadlinePta = Deadline::select(['deadlines.*'])
+                            ->where('psmType', '=', 'PTA')
+                            ->latest('created_at')->first();
+
+    return view('/evaluation/svMenu', [
+        'deadlinePsm1' => $deadlinePsm1,
+        'deadlinePsm2' => $deadlinePsm2,
+        'deadlinePta' => $deadlinePta,
+    ]);
 });
 
-Route::get('/svView', function () {
-    return view('/evaluation/svView');
-});
-
+Route::get('/svView', [EvaluationController::class, 'svView']);
 Route::get('/deadline', [EvaluationController::class, 'deadline']);
 Route::post('/deadline', [EvaluationController::class, 'storeDeadline']);
-Route::get('/svEdit', [EvaluationController::class, 'svEdit']);
+Route::get('/svEdit/{resultID}/{psmType}', [EvaluationController::class, 'svEdit']);
+Route::post('/updateSvMarks/{resultID}/{psmType}', [EvaluationController::class, 'updateSvMarks']);
+
+Route::get('/evView', [EvaluationController::class, 'evView']);
+Route::get('/evEdit/{resultID}/{psmType}', [EvaluationController::class, 'evEdit']);
+Route::post('/updateEvMarks/{resultID}/{psmType}', [EvaluationController::class, 'updateEvMarks']);
+
+/*Route::get('/', function(){
+
+    Mail::send(new App\Mail\DeadlineReminder());
+
+    return view('welcome');
+});*/
 
 //Generate Top 20
 Route::get('/main', function () {
@@ -91,24 +120,52 @@ Route::get('/searcsupervisor', function () {
     return view('/Student/searchsupervisor');
 });
 
-Route::get('/editprofile', function () {
-    return view('/Student/editprofile');
-});
-Route::get('/editprofile', function () {
-    return view('/Student/viewprofile');
-});
+Route::get('/editprofile', 'App\Http\Controllers\usercontroller@home');
 
 
 
 //Manage Coordinator
-Route::get('/Cmainpage', function () {
-    return view('/Coordinator/Cmainpage');
+Route::get('/searchpsmtitle', 'App\Http\Controllers\usercontroller@viewpsmlist');
+Route::get('/searchpsmtitle/search', 'App\Http\Controllers\usercontroller@searchpsm');
+Route::get('/createnewstudent', function () {
+    return view('/Coordinator/createnewstudent');
 });
-Route::get('/psmprofile', function () {
-    return view('/Coordinator/psmprofile');
+Route::post('/create', 'App\Http\Controllers\usercontroller@createstudent');
+Route::get('/viewstudent', function () {
+    return view('/Coordinator/viewstudent');
 });
+Route::get('/searchstudent', 'App\Http\Controllers\usercontroller@viewstudentlist');
+Route::get('/searchstudent/search', 'App\Http\Controllers\usercontroller@searchstudent');
+Route::get('/viewstudent/{studentID}', 'App\Http\Controllers\usercontroller@viewstudentprofile');
+Route::get('/searchstudent/{studentID}', 'App\Http\Controllers\usercontroller@deletestudentprofile');
+Route::get('/updatestudent/{studentID}', 'App\Http\Controllers\usercontroller@updatestudentprofile');
+Route::post('/updatestudent/{studentID}/update', 'App\Http\Controllers\usercontroller@updatestdprofile');
+Route::get('/createsvprofile', function () {
+    return view('/Coordinator/createsvprofile');
+});
+Route::post('/createsv', 'App\Http\Controllers\usercontroller@createsupervisor');
+Route::get('/searchsvlist', 'App\Http\Controllers\usercontroller@viewsvlist');
+Route::get('/searchsvlist/search', 'App\Http\Controllers\usercontroller@searchsv');
+
 
 //Manage Supervisor
 Route::get('/smainpage', function () {
-    return view('/supervisor/smainpage');
+
+    $deadlinePsm1 = Deadline::select(['deadlines.*'])
+                            ->where('psmType', '=', 'PSM 1')
+                            ->latest('created_at')->first();
+
+    $deadlinePsm2 = Deadline::select(['deadlines.*'])
+                            ->where('psmType', '=', 'PSM 2')
+                            ->latest('created_at')->first();
+
+    $deadlinePta = Deadline::select(['deadlines.*'])
+                            ->where('psmType', '=', 'PTA')
+                            ->latest('created_at')->first();
+
+    return view('/supervisor/smainpage', [
+        'deadlinePsm1' => $deadlinePsm1,
+        'deadlinePsm2' => $deadlinePsm2,
+        'deadlinePta' => $deadlinePta,
+    ]);
 });

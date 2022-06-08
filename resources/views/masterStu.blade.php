@@ -259,12 +259,14 @@ function checklogout(){
 </script>
 
 </center>
-<a href="#"><i class="far fa-id-card"></i></a>
-<a href="#"><i class="fas fa-phone"></i></a>
-<a href="#"><i class="fas fa-envelope-open-text"></i></a>
+
+<a href="{{$detaa->studentName}}"><i class="far fa-id-card"></i></a>
+<a href="{{$detaa->studentPhone}}"><i class="fas fa-phone"></i></a>
+<a href="{{$detaa->stdemail}}"><i class="fas fa-envelope-open-text"></i></a>
 <div style="background-color:#000000; height:3px;"></div>
-  <a href="#"><i class="fas fa-folder-open"></i></a>
+  <a href="/Student/editprofile"><i class="fas fa-folder-open"></i></a>
   <a href="#" onclick="return checklogout()"><i  class="fas fa-door-open"></i><span>Logout</span></a>
+
 </div>
 
 <div class="content">
@@ -274,7 +276,7 @@ function checklogout(){
 
 @yield('table')
 @yield('form')
-
+@yield('content')
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 <footer>

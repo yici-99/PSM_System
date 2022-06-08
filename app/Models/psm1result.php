@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class psm1result extends Model
 {
     use HasFactory;
+    protected $table = 'psm1result';
+    protected $primaryKey = 'resultID';
+    public $timestamps = false;
 }

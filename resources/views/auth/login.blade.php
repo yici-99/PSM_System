@@ -31,7 +31,6 @@
                                 name="password"
                                 required autocomplete="current-password" />
             </div>
-
             
 
             <!-- Role Type -->
@@ -42,6 +41,7 @@
                     <option value="supervisor">Supervisor</option>
                     <option value="coordiantor">Coordiantor</option>
                     </select>
+
 
             </div>
             
