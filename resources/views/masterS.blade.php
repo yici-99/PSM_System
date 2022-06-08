@@ -269,7 +269,7 @@ font-size: 18px;
     <div class="topnav">
         <a class="button" href="/">Logout</a>
         <a class="button" href="/studentListS">Report</a>
-        <a class="button" href="">Evaluation</a>
+        <a class="button" href="svMenu">Evaluation</a>
         <a class="button" href="">Rubric</a>
         <a class="button" href="/smainpage">Student's Profile</a>
     </div>

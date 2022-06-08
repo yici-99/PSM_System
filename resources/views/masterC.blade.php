@@ -245,7 +245,7 @@ font-size: 18px;
         <a class="button" href="/">Logout</a>
         <a class="button" href="/reportMainC">Generate Report</a>
         <a class="button" href="">Rubric</a>
-        <a class="button" href="">Deadline</a>
+        <a class="button" href="deadline">Deadline</a>
         <a class="button" href="">Supervisor's Profile</a>
         <a class="button" href="">Student's Profile</a>
         <a class="button" href="/Cmainpage">PSM Title List</a>
