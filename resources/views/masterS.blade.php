@@ -278,7 +278,7 @@ function checklogout(){
 @yield('form')
 =======
 @yield('menu')
->>>>>>> 09f9ecb0ed7c78378e4ee2713fc2818e6ac43f74
+@yield('content')
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>

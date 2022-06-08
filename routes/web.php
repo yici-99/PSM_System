@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EvaluationController;
+use App\Http\Controllers\usercontroller;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,15 +17,13 @@ use App\Http\Controllers\EvaluationController;
 
 //Main
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 Route::get('/masterS', function () {
     return view('masterS');
 });
 
-Route::get('/masterStu', function () {
+Route::post('/masterStu', function () {
     return view('masterStu');
 });
 
@@ -32,9 +31,9 @@ Route::get('/masterC', function () {
     return view('masterC');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::get('/', function () {
+    return view('home');
+});
 
 
 //Manage Evaluation
@@ -92,22 +91,33 @@ Route::get('/searcsupervisor', function () {
     return view('/Student/searchsupervisor');
 });
 
-Route::get('/editprofile', function () {
-    return view('/Student/editprofile');
-});
-Route::get('/editprofile', function () {
-    return view('/Student/viewprofile');
-});
+Route::get('/editprofile', 'App\Http\Controllers\usercontroller@home');
 
 
 
 //Manage Coordinator
-Route::get('/Cmainpage', function () {
-    return view('/Coordinator/Cmainpage');
+Route::get('/searchpsmtitle', 'App\Http\Controllers\usercontroller@viewpsmlist');
+Route::get('/searchpsmtitle/search', 'App\Http\Controllers\usercontroller@searchpsm');
+Route::get('/createnewstudent', function () {
+    return view('/Coordinator/createnewstudent');
 });
-Route::get('/psmprofile', function () {
-    return view('/Coordinator/psmprofile');
+Route::post('/create', 'App\Http\Controllers\usercontroller@createstudent');
+Route::get('/viewstudent', function () {
+    return view('/Coordinator/viewstudent');
 });
+Route::get('/searchstudent', 'App\Http\Controllers\usercontroller@viewstudentlist');
+Route::get('/searchstudent/search', 'App\Http\Controllers\usercontroller@searchstudent');
+Route::get('/viewstudent/{studentID}', 'App\Http\Controllers\usercontroller@viewstudentprofile');
+Route::get('/searchstudent/{studentID}', 'App\Http\Controllers\usercontroller@deletestudentprofile');
+Route::get('/updatestudent/{studentID}', 'App\Http\Controllers\usercontroller@updatestudentprofile');
+Route::post('/updatestudent/{studentID}/update', 'App\Http\Controllers\usercontroller@updatestdprofile');
+Route::get('/createsvprofile', function () {
+    return view('/Coordinator/createsvprofile');
+});
+Route::post('/createsv', 'App\Http\Controllers\usercontroller@createsupervisor');
+Route::get('/searchsvlist', 'App\Http\Controllers\usercontroller@viewsvlist');
+Route::get('/searchsvlist/search', 'App\Http\Controllers\usercontroller@searchsv');
+
 
 //Manage Supervisor
 Route::get('/smainpage', function () {

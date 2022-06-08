@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '42193db0f6b9a37be42ee87cce2086f40c6809dc',
+        'reference' => '66968eb41f6bca730d4d074d5a4dc36a12301ea3',
         'name' => 'laravel/laravel',
         'dev' => true,
     ),
@@ -388,7 +388,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '42193db0f6b9a37be42ee87cce2086f40c6809dc',
+            'reference' => '66968eb41f6bca730d4d074d5a4dc36a12301ea3',
             'dev_requirement' => false,
         ),
         'laravel/sail' => array(
@@ -798,6 +798,15 @@
             'install_path' => __DIR__ . '/../ramsey/uuid',
             'aliases' => array(),
             'reference' => '8505afd4fea63b81a85d3b7b53ac3cb8dc347c28',
+            'dev_requirement' => false,
+        ),
+        'realrashid/sweet-alert' => array(
+            'pretty_version' => 'v5.1.0',
+            'version' => '5.1.0.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../realrashid/sweet-alert',
+            'aliases' => array(),
+            'reference' => 'fb837beaa52568fb3106d311ff3c7a7b8e543608',
             'dev_requirement' => false,
         ),
         'rhumsaa/uuid' => array(
