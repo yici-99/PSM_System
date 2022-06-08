@@ -41,7 +41,8 @@ height:25px;
 @endif
 <h3 style="color:orange;font-size:39px;text-align:center;margin-top:-6%;">Supervisor's Profile</h3>
 <br><br><br><br><br><br>
-<form action='createsv' method='post'>
+@foreach($result as $detaa)
+<form action="/"  method='get'>
     @csrf
 <table>
     <tr>
