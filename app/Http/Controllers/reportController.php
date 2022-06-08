@@ -6,13 +6,212 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use DB;
 
+
 class reportController extends Controller
 {
-    function studentList() //View Student List
+    public function viewList1(Request $request) //View Student List
     {
-        $results = DB::table('psm1result')->join('student','psm1result.studentID','=','student.studentID')->select('psm1result.studentID','student.studentName')->get();
-        return view('report.studentListS', ['datas'=> $results]);
+        $search = $request['search'] ?? "";
+        if($search != ""){
+            $results1 = DB::table('psm1result')
+            ->join('student','psm1result.studentID','=','student.studentID')
+            ->select('psm1result.*','student.*')
+            ->where("psm1result.studentID", "LIKE", '%'.$search.'%')
+            ->get();
+            $results2 = DB::table('psm2result')
+            ->join('student','psm2result.studentID','=','student.studentID')
+            ->select('psm2result.*','student.*')
+            ->where("psm2result.studentID", "LIKE", '%'.$search.'%')
+            ->get();
+            $results3 = DB::table('ptaresult')
+            ->join('student','ptaresult.studentID','=','student.studentID')
+            ->select('ptaresult.*','student.*')
+            ->where("ptaresult.studentID", "LIKE", '%'.$search.'%')
+            ->get();
+        }else{
+            $results1 = DB::table('psm1result')
+            ->join('student','psm1result.studentID','=','student.studentID')
+            ->select('psm1result.*','student.*')
+            ->get();
+            $results2 = DB::table('psm2result')
+            ->join('student','psm2result.studentID','=','student.studentID')
+            ->select('psm2result.*','student.*')
+            ->get();
+            $results3 = DB::table('ptaresult')
+            ->join('student','ptaresult.studentID','=','student.studentID')
+            ->select('ptaresult.*','student.*')
+            ->get(); 
+        }
+           
+    
+        return view('report.studentListS', ['results1'=> $results1,'results2'=> $results2,'results3'=> $results3,'search'=> $search]);
     }
 
+    public function viewList2(Request $request) //View Student List
+    {
+        $search = $request['search'] ?? "";
+        if($search != ""){
+            $results1 = DB::table('psm1result')
+            ->join('student','psm1result.studentID','=','student.studentID')
+            ->select('psm1result.*','student.*')
+            ->where("psm1result.studentID", "LIKE", '%'.$search.'%')
+            ->get();
+            $results2 = DB::table('psm2result')
+            ->join('student','psm2result.studentID','=','student.studentID')
+            ->select('psm2result.*','student.*')
+            ->where("psm2result.studentID", "LIKE", '%'.$search.'%')
+            ->get();
+            $results3 = DB::table('ptaresult')
+            ->join('student','ptaresult.studentID','=','student.studentID')
+            ->select('ptaresult.*','student.*')
+            ->where("ptaresult.studentID", "LIKE", '%'.$search.'%')
+            ->get();
+        }else{
+            $results1 = DB::table('psm1result')
+            ->join('student','psm1result.studentID','=','student.studentID')
+            ->select('psm1result.*','student.*')
+            ->get();
+            $results2 = DB::table('psm2result')
+            ->join('student','psm2result.studentID','=','student.studentID')
+            ->select('psm2result.*','student.*')
+            ->get();
+            $results3 = DB::table('ptaresult')
+            ->join('student','ptaresult.studentID','=','student.studentID')
+            ->select('ptaresult.*','student.*')
+            ->get(); 
+        }
+           
+    
+        return view('report.studentListC', ['results1'=> $results1,'results2'=> $results2,'results3'=> $results3,'search'=> $search]);
+    }
 
+    public function viewdata($resultID, $psmType){ //View student report details
+        if($psmType == 'psm1'){
+            $result = DB::table('psm1result')
+            ->join('student','psm1result.studentID','=','student.studentID')
+            ->select('psm1result.*','student.*')
+            ->where('psm1result.resultID', '=', $resultID)
+            ->first();
+        return view('report.reportStu', ['data'=> $result]);
+        }
+        elseif($psmType == 'psm2'){
+            $result = DB::table('psm2result')
+            ->join('student','psm2result.studentID','=','student.studentID')
+            ->select('psm2result.*','student.*')
+            ->where('psm2result.resultID', '=', $resultID)
+            ->first();
+        return view('report.reportStu', ['data'=> $result]);
+        }
+        else{
+            $result = DB::table('ptaresult')
+            ->join('student','ptaresult.studentID','=','student.studentID')
+            ->select('ptaresult.*','student.*')
+            ->where('ptaresult.resultID', '=', $resultID)
+            ->first();
+        return view('report.reportStu', ['data'=> $result]);
+        }
+        
+    }
+
+    public function calctotal(Request $request){
+        $psmType = $request['psmType'];
+        if($psmType == 'psm1'){
+            $A = DB::table('psm1result')
+            ->join('student','psm1result.studentID','=','student.studentID')
+            ->select('psm1result.*','student.*')
+            ->where('psm1result.grade', '=', 'A')
+            ->count();
+            $B = DB::table('psm1result')
+            ->join('student','psm1result.studentID','=','student.studentID')
+            ->select('psm1result.*','student.*')
+            ->where('psm1result.grade', '=', 'B')
+            ->count();
+            $C = DB::table('psm1result')
+            ->join('student','psm1result.studentID','=','student.studentID')
+            ->select('psm1result.*','student.*')
+            ->where('psm1result.grade', '=', 'C')
+            ->count();
+            $D = DB::table('psm1result')
+            ->join('student','psm1result.studentID','=','student.studentID')
+            ->select('psm1result.*','student.*')
+            ->where('psm1result.grade', '=', 'D')
+            ->count();
+            $E = DB::table('psm1result')
+            ->join('student','psm1result.studentID','=','student.studentID')
+            ->select('psm1result.*','student.*')
+            ->where('psm1result.grade', '=', 'E')
+            ->count();
+            $F = DB::table('psm1result')
+            ->join('student','psm1result.studentID','=','student.studentID')
+            ->select('psm1result.*','student.*')
+            ->where('psm1result.grade', '=', 'F')
+            ->count();
+        }
+        elseif($psmType == 'psm2'){
+            $A = DB::table('psm2result')
+            ->join('student','psm2result.studentID','=','student.studentID')
+            ->select('psm2result.*','student.*')
+            ->where('psm2result.grade', '=', 'A')
+            ->count();
+            $B = DB::table('psm2result')
+            ->join('student','psm2result.studentID','=','student.studentID')
+            ->select('psm2result.*','student.*')
+            ->where('psm2result.grade', '=', 'B')
+            ->count();
+            $C = DB::table('psm2result')
+            ->join('student','psm2result.studentID','=','student.studentID')
+            ->select('psm2result.*','student.*')
+            ->where('psm2result.grade', '=', 'C')
+            ->count();
+            $D = DB::table('psm2result')
+            ->join('student','psm2result.studentID','=','student.studentID')
+            ->select('psm2result.*','student.*')
+            ->where('psm2result.grade', '=', 'D')
+            ->count();
+            $E = DB::table('psm2result')
+            ->join('student','psm2result.studentID','=','student.studentID')
+            ->select('psm2result.*','student.*')
+            ->where('psm2result.grade', '=', 'E')
+            ->count();
+            $F = DB::table('psm2result')
+            ->join('student','psm2result.studentID','=','student.studentID')
+            ->select('psm2result.*','student.*')
+            ->where('psm2result.grade', '=', 'F')
+            ->count();
+        }else{
+            $A = DB::table('ptaresult')
+            ->join('student','ptaresult.studentID','=','student.studentID')
+            ->select('ptaresult.*','student.*')
+            ->where('ptaresult.grade', '=', 'A')
+            ->count();
+            $B = DB::table('ptaresult')
+            ->join('student','ptaresult.studentID','=','student.studentID')
+            ->select('ptaresult.*','student.*')
+            ->where('ptaresult.grade', '=', 'B')
+            ->count();
+            $C = DB::table('ptaresult')
+            ->join('student','ptaresult.studentID','=','student.studentID')
+            ->select('ptaresult.*','student.*')
+            ->where('ptaresult.grade', '=', 'C')
+            ->count();
+            $D = DB::table('ptaresult')
+            ->join('student','ptaresult.studentID','=','student.studentID')
+            ->select('ptaresult.*','student.*')
+            ->where('ptaresult.grade', '=', 'D')
+            ->count();
+            $E = DB::table('ptaresult')
+            ->join('student','ptaresult.studentID','=','student.studentID')
+            ->select('ptaresult.*','student.*')
+            ->where('ptaresult.grade', '=', 'E')
+            ->count();
+            $F = DB::table('ptaresult')
+            ->join('student','ptaresult.studentID','=','student.studentID')
+            ->select('ptaresult.*','student.*')
+            ->where('ptaresult.grade', '=', 'F')
+            ->count();
+        }        
+     
+        return view('report.reportOverview', ['A'=> $A, 'B'=> $B, 'C'=> $C, 'D'=> $D, 'E'=> $E, 'F'=> $F,'psmType' => $psmType]);
+    }
+    
 }

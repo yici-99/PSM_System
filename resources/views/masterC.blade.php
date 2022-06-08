@@ -243,7 +243,7 @@ font-size: 18px;
     <!--right-->
     <div class="topnav">
         <a class="button" href="/">Logout</a>
-        <a class="button" href="">Generate Report</a>
+        <a class="button" href="/reportMainC">Generate Report</a>
         <a class="button" href="">Rubric</a>
         <a class="button" href="">Deadline</a>
         <a class="button" href="">Supervisor's Profile</a>
@@ -277,10 +277,8 @@ function checklogout(){
 
 @yield('table')
 @yield('form')
-<<<<<<< HEAD
-=======
 @yield('menu')
->>>>>>> 7e9cfa3794d3fcb4308c8e2e933418d80e2abbcc
+
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>

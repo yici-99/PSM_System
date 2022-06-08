@@ -85,8 +85,11 @@ Route::get('/reportStu', function () {
     return view('/report/reportStu');
 });
 
-Route::get('/studentListS', [reportController::class,'studentList']);
+Route::get('/studentListS', [reportController::class,'viewList1']);
+Route::get('/studentListC', [reportController::class,'viewList2']);
+Route::get('/reportStu/{resultID}/{psmType}', [reportController::class,'viewdata']);
 
+Route::get('/reportOverview', [reportController::class,'calctotal']);
 
 require __DIR__.'/auth.php';
 
