@@ -5,6 +5,7 @@ use App\Http\Controllers\EvaluationController;
 use App\Http\Controllers\reportController;
 use Illuminate\Support\Facades\Mail;
 use App\Models\Deadline;
+use App\Http\Controllers\CarnivalController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,16 +46,16 @@ Route::get('/dashboard', function () {
 Route::get('/svMenu', function () {
 
     $deadlinePsm1 = Deadline::select(['deadlines.*'])
-                            ->where('psmType', '=', 'PSM 1')
-                            ->latest('created_at')->first();
+        ->where('psmType', '=', 'PSM 1')
+        ->latest('created_at')->first();
 
     $deadlinePsm2 = Deadline::select(['deadlines.*'])
-                            ->where('psmType', '=', 'PSM 2')
-                            ->latest('created_at')->first();
+        ->where('psmType', '=', 'PSM 2')
+        ->latest('created_at')->first();
 
     $deadlinePta = Deadline::select(['deadlines.*'])
-                            ->where('psmType', '=', 'PTA')
-                            ->latest('created_at')->first();
+        ->where('psmType', '=', 'PTA')
+        ->latest('created_at')->first();
 
     return view('/evaluation/svMenu', [
         'deadlinePsm1' => $deadlinePsm1,
@@ -114,13 +115,13 @@ Route::get('/reportStu', function () {
     return view('/report/reportStu');
 });
 
-Route::get('/studentListS', [reportController::class,'viewList1']);
-Route::get('/studentListC', [reportController::class,'viewList2']);
-Route::get('/reportStu/{resultID}/{psmType}', [reportController::class,'viewdata']);
+Route::get('/studentListS', [reportController::class, 'viewList1']);
+Route::get('/studentListC', [reportController::class, 'viewList2']);
+Route::get('/reportStu/{resultID}/{psmType}', [reportController::class, 'viewdata']);
 
-Route::get('/reportOverview', [reportController::class,'calctotal']);
+Route::get('/reportOverview', [reportController::class, 'calctotal']);
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 //Manage Student
 Route::get('/searcsupervisor', function () {
@@ -148,16 +149,16 @@ Route::get('/psmprofile', function () {
 Route::get('/smainpage', function () {
 
     $deadlinePsm1 = Deadline::select(['deadlines.*'])
-                            ->where('psmType', '=', 'PSM 1')
-                            ->latest('created_at')->first();
+        ->where('psmType', '=', 'PSM 1')
+        ->latest('created_at')->first();
 
     $deadlinePsm2 = Deadline::select(['deadlines.*'])
-                            ->where('psmType', '=', 'PSM 2')
-                            ->latest('created_at')->first();
+        ->where('psmType', '=', 'PSM 2')
+        ->latest('created_at')->first();
 
     $deadlinePta = Deadline::select(['deadlines.*'])
-                            ->where('psmType', '=', 'PTA')
-                            ->latest('created_at')->first();
+        ->where('psmType', '=', 'PTA')
+        ->latest('created_at')->first();
 
     return view('/supervisor/smainpage', [
         'deadlinePsm1' => $deadlinePsm1,
@@ -165,3 +166,5 @@ Route::get('/smainpage', function () {
         'deadlinePta' => $deadlinePta,
     ]);
 });
+
+Route::get('/carnival_evaluation', [CarnivalController::class, 'index'])->name('carnival');
