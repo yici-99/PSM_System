@@ -5,7 +5,7 @@
 
 <div class="container">
   <h2>Update Marks</h2><br>
-  <form class="form-horizontal" action="{{ url('updateSvMarks/'.$result->resultID.'/'.$result->psmType) }}" id="selectform" method="POST">
+  <form class="form-horizontal" action="{{ url('updateEvMarks/'.$result->resultID.'/'.$result->psmType) }}" id="selectform" method="POST">
     @csrf
     <div class="form-group">
       <label class="control-label col-sm-2" for="studentName">Name:</label>
@@ -31,37 +31,21 @@
         <h4>{{ $result->stdpsmtitle }}</h4>
       </div>
     </div>
-    @if($result->psmType != 'pta') 
       <div class="form-group">
-      <label class="control-label col-sm-2" for="svMark1">First Evaluation Marks:</label>
+      <label class="control-label col-sm-2" for="evMark">Evaluation Marks:</label>
       <div class="col-sm-5">          
-        <input type="number" step="0.01" class="form-control" id="svMark1" value="{{ $result->svMark1 }}" name="svMark1">
+        <input type="number" step="0.01" class="form-control" id="evMark" value="{{ $result->evMark }}" name="evMark">
       </div>
     </div>
-    <div class="form-group">
-      <label class="control-label col-sm-2" for="svMark2">Second Evaluation Marks:</label>
-      <div class="col-sm-5">          
-        <input type="number" step="0.01" class="form-control" id="svMark2" value="{{ $result->svMark2 }}" name="svMark2">
-      </div>
-    </div>
-    @else
-      <div class="form-group">
-      <label class="control-label col-sm-2" for="svMark">Evaluation Marks:</label>
-      <div class="col-sm-5">          
-        <input type="number" step="0.01" class="form-control" id="svMark" value="{{ $result->svMark }}" name="svMark">
-      </div>
-    </div>
-    @endif
     <br>
-
-    <div class="form-group">
+    <div class="form-group">        
       <div class="col-sm-offset-2 col-sm-10">
-        <button class="btn btn-default" type="button" onclick="checkreset()">
+      <button class="btn btn-default" type="button" onclick="checkreset()">
             Reset
         </button>
         <button type="submit" class="btn btn-default" style="margin-left: 30px;">Update</button>
-      </div> 
-    </div> 
+      </div>
+    </div>
   </form>
 </div><br><br>
 
@@ -69,12 +53,9 @@
   function checkreset(){
     if(confirm('Are you sure to Reset?')){
       document.getElementById('selectform').reset(); 
-      document.getElementById('svMark1').value = 0; 
-      document.getElementById('svMark2').value = 0;
-      document.getElementById('svMark').value = 0;
+      document.getElementById('evMark').value = 0; 
       return false;
     }
-    return false;
   }
 </script>
 

@@ -9,8 +9,31 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  
 </head>
 <style>
+
+.parent {
+  margin: 1rem;
+  padding: 2rem 2rem;
+  text-align: center;
+}
+.child {
+  height: 300px;
+  width: 40%;
+  display: inline-block;
+  padding: 1rem 1rem;
+  vertical-align: middle;
+}
+
+.vertical {
+  height: 400px;
+  width: 0.5px;
+  display: inline-block;
+  border: 1px solid gray;
+  vertical-align: middle;
+}
+
 body{
 margin:0;
 padding:0;
@@ -229,6 +252,7 @@ font-size: 18px;
   height: 180px;  
 }
 
+
 </style>
   <body>
       
@@ -272,13 +296,14 @@ function checklogout(){
 <div class="content">
 <br><br><br>
 <img src = " {{ URL('/umplogo.png') }} " alt="ump" width="200" height="100">
-<br><br><br>
+
 
 @yield('table')
 @yield('form')
 
 @yield('menu')
 
+<br><br><br>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
