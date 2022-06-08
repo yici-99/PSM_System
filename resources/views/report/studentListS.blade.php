@@ -88,7 +88,7 @@ th{
           <tr>
             <td scope="row">{{$result->studentID}}</td>
             <td>{{$result->studentName}}</td>
-            <td><a href= "{{ url('reportStu/'.$result->resultID.'/'.$result->psmType)}}">View</td>
+            <td><a href= "{{ url('reportS/'.$result->resultID.'/'.$result->psmType)}}">View</td>
           </tr>
           @endforeach
 
@@ -113,7 +113,7 @@ th{
           <tr>
             <td scope="row">{{$result->studentID}}</td>
             <td>{{$result->studentName}}</td>
-            <td><a href="{{ url('reportStu/'.$result->resultID.'/'.$result->psmType)}}">View</td>
+            <td><a href="{{ url('reportS/'.$result->resultID.'/'.$result->psmType)}}">View</td>
           </tr>
           @endforeach
           </tbody>
@@ -138,7 +138,7 @@ th{
           <tr>
             <td scope="row">{{$result->studentID}}</td>
             <td>{{$result->studentName}}</td>
-            <td><a href="{{ url('reportStu/'.$result->resultID.'/'.$result->psmType)}}">View</td>
+            <td><a href="{{ url('reportS/'.$result->resultID.'/'.$result->psmType)}}">View</td>
           </tr>
           @endforeach
           </tbody>

@@ -60,35 +60,29 @@ Route::get('/main', function () {
 Route::get('/reportMainC', function () {
     return view('/report/reportMainC');
 });
-
 Route::get('/studentListC', function () {
     return view('/report/studentListC');
 });
-
 Route::get('/studentListS', function () {
     return view('/report/studentListS');
 });
-
 Route::get('/reportOverview', function () {
     return view('/report/reportOverview');
 });
-
 Route::get('/reportC', function () {
     return view('/report/reportC');
 });
-
 Route::get('/reportS', function () {
     return view('/report/reportS');
 });
-
 Route::get('/reportStu', function () {
     return view('/report/reportStu');
 });
 
-Route::get('/studentListS', [reportController::class,'viewList1']);
-Route::get('/studentListC', [reportController::class,'viewList2']);
-Route::get('/reportStu/{resultID}/{psmType}', [reportController::class,'viewdata']);
-
+Route::get('/studentListS', [reportController::class,'viewListS']);
+Route::get('/studentListC', [reportController::class,'viewListC']);
+Route::get('/reportS/{resultID}/{psmType}', [reportController::class,'viewdataS']);
+Route::get('/reportC/{resultID}/{psmType}', [reportController::class,'viewdataC']);
 Route::get('/reportOverview', [reportController::class,'calctotal']);
 
 require __DIR__.'/auth.php';

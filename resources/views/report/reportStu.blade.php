@@ -1,4 +1,4 @@
-@extends('masterStu')
+@extends('masterC')
 
 @section('table')
 <style>
@@ -59,6 +59,27 @@
         background-color:#C5C5C5;
     }
 </style>
+<script>
+function PrintElem(print)
+{
+    var mywindow = window.open('', 'PRINT', 'height=400,width=600');
+
+    mywindow.document.write('<html><head><title>' + document.title  + '</title>');
+    mywindow.document.write('</head><body >');
+    mywindow.document.write('<h1>' + document.title  + '</h1>');
+    mywindow.document.write(document.getElementById(print).innerHTML);
+    mywindow.document.write('</body></html>');
+
+    mywindow.document.close(); 
+    mywindow.focus(); 
+
+    mywindow.print();
+    mywindow.close();
+
+    return true;
+}
+</script>
+<div id="print">
 <div>
 <h1><center>Student Report</center></h1>
 <br><br>
@@ -74,10 +95,24 @@
         <label class="label5">Title:</label><input type="text" readonly value="{{$data->stdpsmtitle}}"><br><br>
     </div>
     <div class="div5">
+        <div  style="float:left;padding-left:350px;display:inline-block;width:300px;text-align: right;">
+        <label class="label5">Total Marks:</label>
+        </div>
+        
         <div>
-        <label class="label6" style="float:left;padding-left:350px;">Total Marks:</label></div>
-        <div style="padding-right:1px;">
         <table class="tb1">
+            @if(($data->psmType) == 'pta')
+            <tr>
+            <th scope="col">EVALUATION 1</th>
+            <th scope="col">EVALUATION 2</th>
+            <th scope="col">TOTAL MARK</th>
+            </tr>
+            <tr>
+            <td scope="col">{{$data->svMark}}</td>
+            <td scope="col">{{$data->evMark}}</td>
+            <td scope="col">{{$data->totalMark}}</td>
+            </tr>
+            @else
             <tr>
             <th scope="col">EVALUATION 1</th>
             <th scope="col">EVALUATION 2</th>
@@ -90,17 +125,20 @@
             <td scope="col">{{$data->svMark2}}</td>
             <td scope="col">{{$data->totalMark}}</td>
             </tr>
+            @endif
         </table></div>
+       
         <br>
     </div>
     <div class="div5">
         <label class="label5">Grade:</label><input type="text" readonly value="{{$data->grade}}"><br>
-    </div>
-    <div class="div6">
-    <button class="btn5"> Download</button>
-    </div>
+    </div> 
 </form>
+<div class="div6">
+    <button class="btn5" onclick="PrintElem('print')"> Print</button>
+    </div>
 <br><br>
+</div>
 </div>
 </div>
 @endsection

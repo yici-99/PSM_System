@@ -9,7 +9,7 @@ use DB;
 
 class reportController extends Controller
 {
-    public function viewList1(Request $request) //View Student List
+    public function viewListS(Request $request) //View Student List
     {
         $search = $request['search'] ?? "";
         if($search != ""){
@@ -47,7 +47,7 @@ class reportController extends Controller
         return view('report.studentListS', ['results1'=> $results1,'results2'=> $results2,'results3'=> $results3,'search'=> $search]);
     }
 
-    public function viewList2(Request $request) //View Student List
+    public function viewListC(Request $request) //View Student List
     {
         $search = $request['search'] ?? "";
         if($search != ""){
@@ -85,14 +85,13 @@ class reportController extends Controller
         return view('report.studentListC', ['results1'=> $results1,'results2'=> $results2,'results3'=> $results3,'search'=> $search]);
     }
 
-    public function viewdata($resultID, $psmType){ //View student report details
+    public function viewdataS($resultID, $psmType){ //View student report details
         if($psmType == 'psm1'){
             $result = DB::table('psm1result')
             ->join('student','psm1result.studentID','=','student.studentID')
             ->select('psm1result.*','student.*')
             ->where('psm1result.resultID', '=', $resultID)
             ->first();
-        return view('report.reportStu', ['data'=> $result]);
         }
         elseif($psmType == 'psm2'){
             $result = DB::table('psm2result')
@@ -100,7 +99,6 @@ class reportController extends Controller
             ->select('psm2result.*','student.*')
             ->where('psm2result.resultID', '=', $resultID)
             ->first();
-        return view('report.reportStu', ['data'=> $result]);
         }
         else{
             $result = DB::table('ptaresult')
@@ -108,9 +106,33 @@ class reportController extends Controller
             ->select('ptaresult.*','student.*')
             ->where('ptaresult.resultID', '=', $resultID)
             ->first();
-        return view('report.reportStu', ['data'=> $result]);
         }
-        
+         return view('report.reportS', ['data'=> $result]);
+    }
+
+    public function viewdataC($resultID, $psmType){ //View student report details
+        if($psmType == 'psm1'){
+            $result = DB::table('psm1result')
+            ->join('student','psm1result.studentID','=','student.studentID')
+            ->select('psm1result.*','student.*')
+            ->where('psm1result.resultID', '=', $resultID)
+            ->first();
+        }
+        elseif($psmType == 'psm2'){
+            $result = DB::table('psm2result')
+            ->join('student','psm2result.studentID','=','student.studentID')
+            ->select('psm2result.*','student.*')
+            ->where('psm2result.resultID', '=', $resultID)
+            ->first();
+        }
+        else{
+            $result = DB::table('ptaresult')
+            ->join('student','ptaresult.studentID','=','student.studentID')
+            ->select('ptaresult.*','student.*')
+            ->where('ptaresult.resultID', '=', $resultID)
+            ->first();
+        }
+         return view('report.reportC', ['data'=> $result]);
     }
 
     public function calctotal(Request $request){
@@ -210,8 +232,9 @@ class reportController extends Controller
             ->where('ptaresult.grade', '=', 'F')
             ->count();
         }        
-     
-        return view('report.reportOverview', ['A'=> $A, 'B'=> $B, 'C'=> $C, 'D'=> $D, 'E'=> $E, 'F'=> $F,'psmType' => $psmType]);
+        $label = ['A', 'B', 'C', 'D', 'E', 'F'];
+        $grade = [$A, $B, $C, $D, $E, $F];
+        return view('report.reportOverview', ['A'=> $A, 'B'=> $B, 'C'=> $C, 'D'=> $D, 'E'=> $E, 'F'=> $F,'psmType' => $psmType, 'label'=> $label, 'grade'=> $grade]);
     }
     
 }

@@ -12,7 +12,7 @@
         border-width:1px;
         border-radius:5px;
         padding:8px;
-        width:10%;
+        width:20%;
     }
 
     .btn7:hover {
