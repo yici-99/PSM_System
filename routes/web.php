@@ -78,7 +78,6 @@ Route::get('/reportS', function () {
 Route::get('/reportStu', function () {
     return view('/report/reportStu');
 });
-
 Route::get('/studentListS', [reportController::class,'viewListS']);
 Route::get('/studentListC', [reportController::class,'viewListC']);
 Route::get('/reportS/{resultID}/{psmType}', [reportController::class,'viewdataS']);

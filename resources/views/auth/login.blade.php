@@ -36,8 +36,8 @@
 
             <!-- Role Type -->
             <div class="mt-4">
-                <x-label for="role_type" :value="__('Select Role Type:')" />
-                    <select id="role_type" name="role_type" required>
+                <x-label for="role" :value="__('Select Role Type:')" />
+                    <select id="role" name="role" required>
                     <option value="student">Student</option>
                     <option value="supervisor">Supervisor</option>
                     <option value="coordiantor">Coordiantor</option>
