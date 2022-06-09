@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Carnival;
 
 class CarnivalController extends Controller
 {
@@ -23,7 +24,7 @@ class CarnivalController extends Controller
      */
     public function create()
     {
-        //
+        return view('CarnivalEvaluation.create');
     }
 
     /**
@@ -34,7 +35,17 @@ class CarnivalController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $carnival = Carnival::create([
+            'coordinatorID' =>$request->coordinatorID,
+            'coordinatorName' =>$request->coordinatorName,
+            'studentID' =>$request->studentID,
+            'studentName' =>$request->studentName,
+            'date'=>$request->date,
+            'appoinmentID'=>$request->appoinmentID,
+
+
+        ]);
+        return redirect()->route('carnival',['carnival'=>$carnival]);
     }
 
     /**

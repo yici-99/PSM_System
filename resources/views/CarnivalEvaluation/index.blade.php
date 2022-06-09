@@ -1,40 +1,69 @@
 @extends('masterC')
 
 @section('menu')
-<div class="overflow-x-auto">
-    <table class="table w-100">
-      <!-- head -->
-      <thead>
-        <tr>
-          <th></th>
-          <th>Name</th>
-          <th>Job</th>
-          <th>Favorite Color</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- row 1 -->
-        <tr>
-          <th>1</th>
-          <td>Cy Ganderton</td>
-          <td>Quality Control Specialist</td>
-          <td>Blue</td>
-        </tr>
-        <!-- row 2 -->
-        <tr>
-          <th>2</th>
-          <td>Hart Hagerty</td>
-          <td>Desktop Support Technician</td>
-          <td>Purple</td>
-        </tr>
-        <!-- row 3 -->
-        <tr>
-          <th>3</th>
-          <td>Brice Swyre</td>
-          <td>Tax Accountant</td>
-          <td>Red</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-    @endsection
+    <html>
+
+    <head>
+        <style>
+            #customers {
+                font-family: Arial, Helvetica, sans-serif;
+                border-collapse: collapse;
+                width: 70%;
+            }
+
+            #customers td,
+            #customers th {
+                border: 1px solid #ddd;
+                padding: 8px;
+            }
+
+            #customers tr:nth-child(even) {
+                background-color: #f2f2f2;
+            }
+
+            #customers tr:hover {
+                background-color: #ddd;
+            }
+
+            #customers th {
+                padding-top: 12px;
+                padding-bottom: 12px;
+                text-align: left;
+                background-color: #04AA6D;
+                color: white;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <h1>Carnival Evaluation Table</h1>
+
+        <table id="customers">
+            <tr>
+                <th>Coordinator ID</th>
+                <th>Coordiantor Name</th>
+                <th>Student ID</th>
+                <th>Student Phone Number</th>
+                <th>Date</th>
+                <th>Appoinment ID</th>
+                <th>Reason</th>
+            </tr>
+                @foreach ($carnival as $CarnivalEvaluation)
+                    <tr>
+                        <td class="font-bold"> {{ $CarnivalEvaluation->coordinatorID }}</td>
+                        <td class="font-bold"> {{ $CarnivalEvaluation->coordinatorName }}</td>
+                        <td class="font-bold"> {{ $CarnivalEvaluation->studentID }}</td>
+                        <td class="font-bold"> {{ $CarnivalEvaluation->studentPhone }}</td>
+                        <td class="font-bold"> {{ $CarnivalEvaluation->date }}</td>
+                        <td class="font-bold"> {{ $CarnivalEvaluation->appoinmentID }}</td>
+                        <td class="font-bold"> {{ $CarnivalEvaluation->reason }}</td>
+                    </tr>
+                @endforeach
+        </table>
+        <a class="btn" href="{{ route('CarnivalEvaluation.create') }}">Add</a>
+        {{-- <a class="btn" href="{{ route('carnival.create') }}">Edit</a> --}}
+    </body>
+
+    </html>
+@endsection

@@ -19,4 +19,9 @@ class Carnival extends Model
        'appointmentID',
        'reason',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
