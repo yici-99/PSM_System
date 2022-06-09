@@ -90,8 +90,13 @@ Route::post('/updateEvMarks/{resultID}/{psmType}', [EvaluationController::class,
 
 //Generate Top 20
 Route::get('/main', function () {
-    return view('ResultMain');
+    return view('Top_20_students.ResultMain');
 });
+
+Route::get('/main2', function () {
+    return view('Top_20_students.assign_indus');
+});
+
 
 //Generate Report
 Route::get('/reportMainC', function () {

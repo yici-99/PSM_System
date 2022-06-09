@@ -63,22 +63,22 @@ color: #1DC4E7;
   color:orange;
 }
 
-.topnav a {
-  float: right;
+.topnav a{
+  float: left;
   vertical-align: top;
   color: white;
   text-align:center;
   font-family: Arial;
   text-decoration: none;
   font-size: 18px;
-  margin-left:1%;
-  margin-right:3%;
-  margin-top:-1.5%;
+  margin-left:-4%;
+  margin-right:9%;
+  margin-top:-25%;
 }
 
 
 .logout_btn{
-pading: 5px;
+padding: 5px;
 background: #19B3D3;
 text-decoration:none;
 float:right;
@@ -224,7 +224,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', end
   color: white;
 }
 footer{
-bottom:0;
+position:fixed;
+left:0px;
+bottom:0px;
 background-color: #FFE4B5;
 background-size: cover;
 border-top: 1px solid #e5e5e5;
@@ -235,7 +237,7 @@ font-size: 13px;
             height: 200px;
 }
 
-div3{
+#div3{
 margin-top:70px;
 padding-top: 30px;
 position: fixed;
@@ -266,13 +268,32 @@ font-size: 18px;
     <h3>University   Malaysia <span> Pahang</span></h3>
 </div>
     <!--right-->
+  <nav> 
     <div class="topnav">
-        <a class="button" href="/">Logout</a>
-        <a class="button" href="/studentListS">Report</a>
-        <a class="button" href="svMenu">Evaluation</a>
-        <a class="button" href="">Rubric</a>
-        <a class="button" href="/searchstudentlist">Student's Profile</a>
+
+     <ul class="nav navbar-nav navbar-right">
+        <li><a class="button" href="/studentListS">Report</a><li>
+        <li><a class="button" href="">Rubric</a><li>
+        <li><a class="button" href="{{ url('svMenu') }}">Evaluation</a><li>          
+        <li><a class="button" href="/searchstudentlist">Student's Profile</a><li>
+        <li><a class="button" href="/">Logout</a></li>   
+        </ul>    
     </div>
+   </nav> 
+
+<!--<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#"></a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li><a href="#">Page 1</a></li>
+      <li><a href="#">Page 2</a></li>
+      <li><a href="#">Page 3</a></li>
+    </ul>
+  </div>
+</nav>-->
 </header>
 
 <div class="sidebar">
@@ -300,6 +321,7 @@ function checklogout(){
 
 @yield('table')
 @yield('form')
+
 @yield('menu')
 @yield('content')
 <br><br><br>
@@ -337,4 +359,4 @@ function checklogout(){
 </footer>
 </div>
 </body>
-</html>
+ </html>

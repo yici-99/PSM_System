@@ -1,4 +1,4 @@
-@extends('master')
+@extends('masterS')
 
 @section('form')
 
