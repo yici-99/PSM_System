@@ -77,9 +77,17 @@ class CarnivalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+
+        $date = $request->input('date');
+
+
+        DB::table('appoimentID')->where('appoimentID', $appoimentID)
+        ->update(['date' => $request->date]);
+
+
+    echo "Record updated successfully.<br/>";
     }
 
     /**
