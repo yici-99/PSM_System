@@ -85,6 +85,11 @@ Route::get('/main', function () {
     return view('ResultMain');
 });
 
+Route::get('/main2', function () {
+    return view('assign_indus');
+});
+
+
 //Generate Report
 Route::get('/reportMainC', function () {
     return view('/report/reportMainC');
