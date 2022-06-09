@@ -88,7 +88,17 @@ class usercontroller extends Controller
     public function updatestdprofile(request $request, $studentID)
     {
         
-        $result= Student::where('studentID',$studentID) ->update(['studentName' => $request['studentName'], 'stdaddress' => $request['stdaddress'], 'studentPhone' => $request['studentPhone'], 'stdemail' => $request['stdemail'], 'stdyear' => $request['stdyear'],'stdsupervisor'=>$request['stdsupervisor'],'stdpsmtitle'=>$request['stdpsmtitle'],'psmType'=>$request['psmType'],'password'=>$request['password']])->where ('studentID','=',$studentID)->update();
+        $result=Student::find($studentID);
+        $result->studentName=$request->input('studentName');
+        $result->stdaddress=$request->input('stdaddress');
+        $result->studenPhone=$request->input('studentPhone');
+        $result->stdemail=$request->input('stdemail');
+        $result->stdyear=$request->input('stdyear');
+        $result->stdsupervisor=$request->input('stdsupervisor');
+        $result->stdpsmtitle=$request->input('stdpsmtitle');
+        $result->psmType=$request->input('psmType');
+        $result->password=$request->input('password');
+        $result->update();
         return view('\Coordinator\viewstudent', ['result' => $result])->with('successMsg','Results Found !');
     }
 
@@ -98,11 +108,11 @@ class usercontroller extends Controller
         return view('\Coordinator\searchpsmtitle',['deta'=>$deta]);
     }
     
-    public function searchpsm(request $request)
+    function searchpsm(request $request)
     {
        
         $deta = $request->input('deta'); 
-        $deta = Student::select('studentName','studentID','stdsupervisor','stdpsmtitle','psmType')->where('psmType','LIKE', '%' . $deta . '%')->get();
+        $deta = Student::select('studentName','studentID','stdsupervisor','stdpsmtitle','psmType')->where('stdpsmtitle','LIKE', '%' . $deta . '%')->get();
         if (count ( $deta ) > 0)
         return view('\Coordinator\searchpsmtitle', ['deta' => $deta])->with('successMsg','Results Found !');
         else
@@ -132,7 +142,7 @@ class usercontroller extends Controller
         return view('\Coordinator\searchsvlist',['deta'=>$deta]);
     }
 
-    public function searchsv(request $request)
+    function searchsv(request $request)
     {
        
         $deta = $request->input('deta'); 
@@ -144,4 +154,15 @@ class usercontroller extends Controller
         
     }
 
+    function viewsvprofile($supervisorID)
+    {
+        $result = supervisor::select('*')->where('supervisorID', '=', $supervisorID)->get();
+        return view('\Coordinator\viewsvprofile', ['result' => $result]);
+    }
+
+    function deletesvprofile($supervisorID)
+    {
+        $result = supervisor::select('*')->where('supervisorID', '=', $supervisorID)->delete();
+        return redirect('searchsvlist')->with('successMsg','Profile Successful deleted !');
+    }
 }

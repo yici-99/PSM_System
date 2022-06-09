@@ -247,7 +247,7 @@ font-size: 18px;
         <a class="button" href="">Report</a>
         <a class="button" href="">Evaluation</a>
         <a class="button" href="">Rubric</a>
-        <a class="button" href="/smainpage">Student's Profile</a>
+        <a class="button" href="/searchstudentlist">Student's Profile</a>
     </div>
 </header>
 
@@ -276,7 +276,6 @@ function checklogout(){
 
 @yield('table')
 @yield('form')
-=======
 @yield('menu')
 @yield('content')
 

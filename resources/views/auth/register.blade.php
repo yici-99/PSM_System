@@ -45,18 +45,6 @@
                                 name="password_confirmation" required />
             </div>
 
-             <!-- Role Type -->
-             <div class="mt-4">
-                <x-label for="role_type" :value="__('Role Type')" />
-
-                <select id="role_type" class="block mt-1 w-full"
-                                type="role_type"
-                                name="role_type" required >
-                                <option value ="3">3</option>
-                                <option value = "4"> 4</option><br><br>
-                </select>
-            </div>
-
             <div class="flex items-center justify-end mt-4">
                 <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('register') }}">
                     {{ __('Already registered?') }}

@@ -32,18 +32,6 @@
                                 required autocomplete="current-password" />
             </div>
 
-              <!-- Role Type -->
-              <div class="mt-4">
-                <x-label for="role_type" :value="__('Role Type')" />
-
-                <select id="role_type" class="block mt-1 w-full"
-                                type="role_type"
-                                name="role_type" required >
-                                <option value ="3">3</option>
-                                <option value = "4"> 4</option><br><br>
-                </select>
-            </div>
-
             <!-- Remember Me -->
             <div class="block mt-4">
                 <label for="remember_me" class="inline-flex items-center">
