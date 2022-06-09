@@ -554,6 +554,8 @@ class ComposerStaticInit4e61d366072ca2e1c1e3846ae33fecd9
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\EvaluationController' => __DIR__ . '/../..' . '/app/Http/Controllers/EvaluationController.php',
         'App\\Http\\Controllers\\reportController' => __DIR__ . '/../..' . '/app/Http/Controllers/reportController.php',
+        'App\\Http\\Controllers\\studentcontroller' => __DIR__ . '/../..' . '/app/Http/Controllers/studentcontroller.php',
+        'App\\Http\\Controllers\\supervisorcontroller' => __DIR__ . '/../..' . '/app/Http/Controllers/supervisorcontroller.php',
         'App\\Http\\Controllers\\usercontroller' => __DIR__ . '/../..' . '/app/Http/Controllers/usercontroller.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
