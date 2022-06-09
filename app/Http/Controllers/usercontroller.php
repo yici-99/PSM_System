@@ -85,9 +85,9 @@ class usercontroller extends Controller
         return view('\Coordinator\updatestudent', ['result' => $result]);
     }
 
-    public function updatestdprofile(request $request, $studentID)
+    public function updatestdprofile(request $request,$studentID)
     {
-        
+
         $result=Student::find($studentID);
         $result->studentName=$request->input('studentName');
         $result->stdaddress=$request->input('stdaddress');
@@ -154,15 +154,20 @@ class usercontroller extends Controller
         
     }
 
+
     function viewsvprofile($supervisorID)
+
     {
         $result = supervisor::select('*')->where('supervisorID', '=', $supervisorID)->get();
         return view('\Coordinator\viewsvprofile', ['result' => $result]);
     }
 
+
     function deletesvprofile($supervisorID)
+
     {
         $result = supervisor::select('*')->where('supervisorID', '=', $supervisorID)->delete();
         return redirect('searchsvlist')->with('successMsg','Profile Successful deleted !');
     }
+
 }

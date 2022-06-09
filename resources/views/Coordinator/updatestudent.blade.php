@@ -41,7 +41,7 @@ margin-left:200px;
 <h3 style="color:orange;font-size:39px;text-align:center;margin-top:-6%;">Student's Profile</h3>
 <br><br><br><br><br><br>
 @foreach($result as $detaa)
-<form action="/updatestudent/{{ $detaa->studentID}}/update" method='post'>
+<form action="{{ url(updatestudent/'.$detaa->studentID.'/update) }}" method='post'>
     @csrf
 <table>
     <tr>
@@ -85,11 +85,7 @@ margin-left:200px;
 </tr>
 <tr>
 <th>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;PSM Type:<br><br></th>
-<th>&emsp;&emsp;<select name = "psmtype" value="{{$detaa->psmType}}" required>
-<option value ="PSM1">PSM 1</option>
-<option value = "PSM2"> PSM 2</option><br><br>
-<option value = "PTA"> PTA</option><br><br>
-</select></th>
+<th>{{$detaa->psmType}}</th>
 </tr>
 <tr>
 <th>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Password:</th>

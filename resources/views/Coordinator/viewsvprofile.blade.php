@@ -33,6 +33,10 @@ height:25px;
   color: white;
 }
 
+.bio{
+    margin-left:90%;
+}
+
 </style>
 @if(session()->has('successMsg'))
     <div class="alert alert-success">
@@ -52,8 +56,9 @@ height:25px;
 <th>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Biography</th>
 </tr>
 <tr>
-<th>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; {{ $detaa->svbiography }}</th></tr>
-<br><br>
+<th class="bio">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;{{ $detaa->svbiography }}<br><br></th>
+</tr>
+<br>
 <tr>
 <th>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Info<br><br></th>
 </tr>
@@ -88,7 +93,7 @@ height:25px;
 <tr>
 <th style="text-colour:red;">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; *Required Field</th>
 </tr>
-
+@endforeach
 
 </table>
 <br><br>
