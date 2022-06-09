@@ -270,11 +270,12 @@ font-size: 18px;
     <!--right-->
   <nav> 
     <div class="topnav">
+
      <ul class="nav navbar-nav navbar-right">
         <li><a class="button" href="/studentListS">Report</a><li>
         <li><a class="button" href="">Rubric</a><li>
-        <li><a class="button" href="svMenu">Evaluation</a><li>          
-        <li><a class="button" href="/smainpage">Student's Profile</a><li>
+        <li><a class="button" href="{{ url('svMenu') }}">Evaluation</a><li>          
+        <li><a class="button" href="/searchstudentlist">Student's Profile</a><li>
         <li><a class="button" href="/">Logout</a></li>   
         </ul>    
     </div>
