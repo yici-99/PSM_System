@@ -45,6 +45,7 @@
                                 name="password_confirmation" required />
             </div>
 
+
             <!-- Role Type -->
             <div class="mt-4">
                 <x-label for="role" :value="__('Select Role Type:')" />
