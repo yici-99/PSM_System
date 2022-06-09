@@ -7,6 +7,9 @@ use App\Http\Requests\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Student;
+use App\Models\supervisor;
+use App\Models\User;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -32,7 +35,13 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        if (auth()->user()->role == 'student') {
+            return redirect('/masterStu');
+        } else if (auth()->user()->role == 'supervisor') { 
+            return redirect('/masterS');
+        }else{
+            return redirect('/masterC');
+        }
     }
 
     /**
