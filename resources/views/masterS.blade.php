@@ -300,7 +300,6 @@ function checklogout(){
 
 @yield('table')
 @yield('form')
-
 @yield('menu')
 @yield('content')
 <br><br><br>

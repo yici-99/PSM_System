@@ -38,11 +38,13 @@ Route::get('/masterC', function () {
     return view('masterC');
 });
 
+Route::get('/home', function () {
+    return view('home');
+});
 Route::get('/', function () {
     return view('welcome');
 });
-Auth::Route();
-Route::get('/home',[App\Http\Controllers\HomeController::class,'index'])->name('home');
+
 
 
 //Manage Evaluation
@@ -88,6 +90,11 @@ Route::post('/updateEvMarks/{resultID}/{psmType}', [EvaluationController::class,
 Route::get('/main', function () {
     return view('ResultMain');
 });
+
+Route::get('/main2', function () {
+    return view('assign_indus');
+});
+
 
 //Generate Report
 Route::get('/reportMainC', function () {

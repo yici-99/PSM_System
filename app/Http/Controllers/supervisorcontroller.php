@@ -9,6 +9,7 @@ use App\Models\supervisor;
 
 class supervisorcontroller extends Controller
 {
+
     //Manage Supervisor
 
     function studentlist()

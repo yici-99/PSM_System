@@ -97,6 +97,7 @@ height:25px;
 
 </table>
 <br><br>
+@endforeach
 <input type="submit" class="b b1" value="EDIT" style="width:100px;margin-left:1000px;"></a>
 <button onclick="location.href='{{ url('/searchsvlist') }}'" type="submit" class="b b1" value="DeBack" style="width:80px;height: 40px;margin-right:1%;">BACK</button>
 <br><br>

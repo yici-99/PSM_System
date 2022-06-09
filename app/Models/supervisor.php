@@ -9,4 +9,5 @@ class supervisor extends Model
 {
     use HasFactory;
     public $timestamps = false;
+    protected $primaryKey = 'supervisorID';
 }
