@@ -1,4 +1,4 @@
-@extends ('masterC')
+@extends ('masterS')
 @section('content')
 
 <!DOCTYPE html>
@@ -41,7 +41,7 @@ margin-left:200px;
 <h3 style="color:orange;font-size:39px;text-align:center;margin-top:-6%;">Student's Profile</h3>
 <br><br><br><br><br><br>
 @foreach($result as $detaa)
-<form action="{{ url(updatestudent/'.$detaa->studentID.'/update) }}" method='post'>
+<form action="/searchstudentlist" method='get'>
     @csrf
 <table>
     <tr>
@@ -49,7 +49,7 @@ margin-left:200px;
 </tr>
 <tr>
 <th>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Name:</th>
-<th>&emsp;&emsp;<input type="text" name = "name"  size="40" placeholder="Student's Name" value="{{ $detaa->studentName }}"required><br><br></th>
+<th>&emsp;&emsp;{{ $detaa->studentName }}<br><br></th>
 </tr>
 <tr>
 <th>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Matric ID:</th>
@@ -57,39 +57,36 @@ margin-left:200px;
 </tr>
 <tr>
 <th>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Address:</th>
-<th>&emsp;&emsp;<input type="text" name = "name"  size="40" placeholder="Student's Name" value="{{$detaa->stdaddress}}"required><br><br></th>
+<th>&emsp;&emsp;{{$detaa->stdaddress}}<br><br></th>
 </tr>
 <tr>
 <th>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Phone Number:</th>
-<th>&emsp;&emsp;<input type="text" name = "name"  size="40" placeholder="Student's Name" value="{{$detaa->studentPhone}}"required><br><br></th>
+<th>&emsp;&emsp;{{$detaa->studentPhone}}<br><br></th>
 </tr>
 <tr>
 <th>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Email:</th>
-<th>&emsp;&emsp;<input type="text" name = "name"  size="40" placeholder="Student's Name" value="{{$detaa->stdemail}}"required><br><br></th>
+<th>&emsp;&emsp;{{$detaa->stdemail}}<br><br></th>
 </tr>
 
 <tr>
 <th>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Year:<br><br></th>
-<th>&emsp;&emsp;<select name = "year" value="{{$detaa->stdyear}}" required>
-<option value ="3">3</option>
-<option value = "4"> 4</option><br><br>
-</select></th>
+<th>&emsp;&emsp;{{$detaa->stdyear}}</th>
 </tr>
 <tr>
 <th>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Supervisor:</th>
-<th>&emsp;&emsp;<input type="text" name = "name"  size="40" placeholder="Student's Name" value="{{$detaa->stdsupervisor}}"required><br><br></th>
+<th>&emsp;&emsp;{{$detaa->stdsupervisor}}<br><br></th>
 </tr>
 <tr>
 <th>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;PSM title:</th>
-<th>&emsp;&emsp;<input type="text" name = "name"  size="40" placeholder="Student's Name" value="{{$detaa->stdpsmtitle}}"required><br><br></th>
+<th>&emsp;&emsp;{{$detaa->stdpsmtitle}}<br><br></th>
 </tr>
 <tr>
 <th>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;PSM Type:<br><br></th>
-<th>{{$detaa->psmType}}</th>
+<th>&emsp;&emsp;{{$detaa->psmType}}</th>
 </tr>
 <tr>
 <th>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Password:</th>
-<th>&emsp;&emsp;<input type="text" name = "name"  size="40" placeholder="Student's Name" value="{{$detaa->password}}"required><br><br></th>
+<th>&emsp;&emsp;{{$detaa->password}}<br><br></th>
 </tr>
 <tr>
 <th>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Role Type:<br><br></th>
@@ -100,7 +97,7 @@ margin-left:200px;
 
 </table>
 <br><br>
-<input type="submit" class="b b1" value="Update" style="width:100px;margin-left:1000px;">
+<button  onclick="location.href='{{ url('/searchstudentlist') }}'" type="submit"  class="b b1" value="Back" style="width:80px;height: 40px;margin-right:1%;">BACK</button>
 <br><br>
 </form>
 </html>

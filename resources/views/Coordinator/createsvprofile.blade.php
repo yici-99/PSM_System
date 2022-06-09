@@ -91,7 +91,8 @@ height:25px;
 
 </table>
 <br><br>
-<input type="submit" class="b b1" value="Create Profile" style="width:100px;margin-left:1000px;"></a>
+<input type="submit" class="b b1" value="Create Profile" style="width:150px;height: 40px;margin-left:50%;"></a>
+<button onclick="location.href='{{ url('/searchsvlist') }}'" type="submit" class="b b1" value="DeBack" style="width:80px;height: 40px;margin-right:1%;">BACK</button>
 <br><br>
 </form>
 </html>

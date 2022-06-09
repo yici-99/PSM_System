@@ -271,7 +271,7 @@ font-size: 18px;
         <a class="button" href="/studentListS">Report</a>
         <a class="button" href="svMenu">Evaluation</a>
         <a class="button" href="">Rubric</a>
-        <a class="button" href="/smainpage">Student's Profile</a>
+        <a class="button" href="/searchstudentlist">Student's Profile</a>
     </div>
 </header>
 
