@@ -9,6 +9,7 @@ use App\Models\Deadline;
 use App\Http\Controllers\usercontroller;
 use App\Http\Controllers\supervisorcontroller;
 use App\Http\Controllers\studentcontroller;
+use App\Http\Controllers\Top20;
 
 /*
 |--------------------------------------------------------------------------
@@ -93,10 +94,14 @@ Route::get('/main', function () {
     return view('Top_20_students.ResultMain');
 });
 
-Route::get('/main2', function () {
+Route::get('/assign_industry', function () {
     return view('Top_20_students.assign_indus');
 });
+ 
 
+Route::get('/studentresult','App\Http\Controllers\Top20@show');
+Route::post('/assign_industry/add','App\Http\Controllers\Top20@add');
+Route::get('/studentresult/top20','App\Http\Controllers\Top20@order');
 
 //Generate Report
 Route::get('/reportMainC', function () {

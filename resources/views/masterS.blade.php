@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
@@ -200,7 +201,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', end
   color: white;
 }
 footer{
-bottom:0;
+position:absolute;
+bottom:-1;
 background-color: #FFE4B5;
 background-size: cover;
 border-top: 1px solid #e5e5e5;
@@ -245,7 +247,8 @@ font-size: 18px;
     <a class="button" href="/">Logout</a>  
         <a class="button" href="/studentListS">Report</a>
         <a class="button" href="">Rubric</a>
-        <a class="button" href="{{ url('svMenu') }}">Evaluation</a>       
+        <a class="button" href="{{ url('svMenu') }}">Evaluation</a>   
+        <a class="button" href="/studentresult">Generate Top 20</a>
         <a class="button" href="/searchstudentlist">Student's Profile</a>
     </div>
 </header>
@@ -280,6 +283,7 @@ function checklogout(){
 @yield('content')
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+<br><br>
 <footer>
 <p>&emsp;&emsp;&emsp;&emsp; ABOUT UMP</p><br>
 <table2>

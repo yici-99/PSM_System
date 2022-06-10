@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\studentresult;
+use App\Models\assigns;
+use Illuminate\Support\Facades\DB;
 class Top20 extends Controller
 {
     /**
@@ -11,31 +13,19 @@ class Top20 extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function order()
     {
-        //
+        $id = studentresult::select('studentName','studentID','SvName','studentTitle','psm1Marks','psm2Marks')
+                            ->orderBy('psm2Marks', 'DESC')
+                            ->get();
+        return view('Top_20_students.Resultmain',['id'=> $id])->with('success','Generated Top 20 students');        
+
+        //$id = \App\Models\studentresult::all();
+        //return view('Top_20_students.Resultmain',['id'=> $id]);
+        
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
     /**
      * Display the specified resource.
@@ -43,9 +33,10 @@ class Top20 extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        $id = \App\Models\studentresult::all();
+        return view('Top_20_students.Resultmain',['id'=> $id]);
     }
 
     /**
@@ -54,31 +45,12 @@ class Top20 extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function add(Request $request)
     {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+         \App\Models\assigns::create($request->all());
+         return redirect('/studentresult');
+    }    
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+
 }
