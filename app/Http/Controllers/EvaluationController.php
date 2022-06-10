@@ -37,6 +37,26 @@ class EvaluationController extends Controller
         return redirect('/deadline')->with('success', 'Deadline has been saved successfully.');
     }
 
+    public function svMenu() {
+        $deadlinePsm1 = Deadline::select(['deadlines.*'])
+                            ->where('psmType', '=', 'PSM 1')
+                            ->latest('created_at')->first();
+
+        $deadlinePsm2 = Deadline::select(['deadlines.*'])
+                            ->where('psmType', '=', 'PSM 2')
+                            ->latest('created_at')->first();
+
+        $deadlinePta = Deadline::select(['deadlines.*'])
+                            ->where('psmType', '=', 'PTA')
+                            ->latest('created_at')->first();
+
+        return view('/evaluation/svMenu', [
+            'deadlinePsm1' => $deadlinePsm1,
+            'deadlinePsm2' => $deadlinePsm2,
+            'deadlinePta' => $deadlinePta,
+        ]);
+    }
+
     public function svView(Request $request) {
 
         $deadlinePsm1 = Deadline::select(['deadlines.*'])
