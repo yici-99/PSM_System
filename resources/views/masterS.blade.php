@@ -3,37 +3,14 @@
 <head>
 <meta charset="utf-8">
 <title>PSM Evaluation</title>
-
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  
 </head>
 <style>
-
-.parent {
-  margin: 1rem;
-  padding: 2rem 2rem;
-  text-align: center;
-}
-.child {
-  height: 300px;
-  width: 40%;
-  display: inline-block;
-  padding: 1rem 1rem;
-  vertical-align: middle;
-}
-
-.vertical {
-  height: 400px;
-  width: 0.5px;
-  display: inline-block;
-  border: 1px solid gray;
-  vertical-align: middle;
-}
-
 body{
 margin:0;
 padding:0;
@@ -224,7 +201,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', end
   color: white;
 }
 footer{
-bottom:0;
+position:absolute;
+bottom:-1;
 background-color: #FFE4B5;
 background-size: cover;
 border-top: 1px solid #e5e5e5;
@@ -252,7 +230,6 @@ font-size: 18px;
   height: 180px;  
 }
 
-
 </style>
   <body>
       
@@ -267,10 +244,11 @@ font-size: 18px;
 </div>
     <!--right-->
     <div class="topnav">
-        <a class="button" href="/">Logout</a>
+    <a class="button" href="/">Logout</a>  
         <a class="button" href="/studentListS">Report</a>
-        <a class="button" href="{{ url('svMenu') }}">Evaluation</a>
         <a class="button" href="">Rubric</a>
+        <a class="button" href="{{ url('svMenu') }}">Evaluation</a>   
+        <a class="button" href="/studentresult">Generate Top 20</a>
         <a class="button" href="/searchstudentlist">Student's Profile</a>
     </div>
 </header>
@@ -285,27 +263,27 @@ function checklogout(){
 </script>
 
 </center>
-<a href="#"><i class="far fa-id-card"></i></a>
-<a href="#"><i class="fas fa-phone"></i></a>
-<a href="#"><i class="fas fa-envelope-open-text"></i></a>
+
+<a href=""><i class="far fa-id-card"></i></a>
+<a href=""><i class="fas fa-phone"></i></a>
+<a href=""><i class="fas fa-envelope-open-text"></i></a>
 <div style="background-color:#000000; height:3px;"></div>
-  <a href="#"><i class="fas fa-folder-open"></i></a>
+  <a href="/Student/editprofile"><i class="fas fa-folder-open"></i></a>
   <a href="#" onclick="return checklogout()"><i  class="fas fa-door-open"></i><span>Logout</span></a>
+
 </div>
 
 <div class="content">
 <br><br><br>
 <img src = " {{ URL('/umplogo.png') }} " alt="ump" width="200" height="100">
-
+<br><br><br>
 
 @yield('table')
 @yield('form')
-@yield('menu')
 @yield('content')
-<br><br><br>
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+<br><br>
 <footer>
 <p>&emsp;&emsp;&emsp;&emsp; ABOUT UMP</p><br>
 <table2>

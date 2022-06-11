@@ -1,33 +1,43 @@
-@extends('master')
+@extends('masterS')
 
 @section('form')
+<center>
+<h1>FYP CARNIAL MARKS</h1>
 
+<form action="/assign_industry/add" method="post">
 
-<form>
-<div class="center">  
-  <div class="form-group row">
-    <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+ {{csrf_field() }}
+   <div class="form-group"> 
+    <label for="exampleFormControlInput1" class="col-sm-2 col-form-label">Name</label>
     <div class="col-sm-10">
-      <input type="email" class="form-control" id="inputEmail3" placeholder="Email" style="width:1000px">
-    </div>
+      <input type="text"  name="studentName" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Name of Student">
+   </div>
+   <br>
   </div>
-  <div class="form-group row">
-    <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+  <div class="form-group"> 
+    <label for="staticEmail" class="col-sm-2 col-form-label">MATRIX ID</label>
     <div class="col-sm-10">
-      <input type="password" class="form-control" id="inputPassword3" placeholder="Password" style="width:1000px">
-    </div>
-  </div>
-
-  <div class="form-group row">
-    <label for="exampleFormControlTextarea1" class="col-sm-2 col-form-label">Example textarea</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" style="width:500px; height: 100px;"></textarea>
-  </div>
-  <div class="form-group row">
+    <input type="text"  name="studentID" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Matrix ID of student">
+   </div>
+    <br><br>
+    <div class="form-group"> 
+    <label for="staticEmail" class="col-sm-2 col-form-label">FYP TITLE</label>
     <div class="col-sm-10">
-      <button type="submit" class="btn btn-primary">Sign in</button>
-    </div>
+    <input type="text"  name="studentTitle" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter FYP title">
+   </div>
+    <br><br><br><br>
   </div>
+  <div class="col-7">
+    <label for="exampleFormControlTextarea1">ASSIGN INDUSTRY NAME</label>
+    <textarea class="form-control" name="indusName" id="exampleFormControlTextarea1" rows="1" placeholder="Enter Industry Name"></textarea>
+  </div> 
+  <div class="col-7">
+    <label for="exampleFormControlTextarea1">JUSTIFICATION</label>
+    <textarea class="form-control" name="reason" id="exampleFormControlTextarea1" rows="4"></textarea>
   </div>
-</form>
+  <br><br>
   <center>
+  <button type="submit" class="btn btn-dark btn-lg">Save Data</button>
+  <br>
+</form>
 @endsection

@@ -6,11 +6,24 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Student;
 use App\Models\supervisor;
+use App\Models\User;
 
 
 class usercontroller extends Controller
 {
-    public function home(request $req)
+    
+    public function homec(request $request)
+    {
+       
+        $deta = $request->input('deta'); 
+        $deta = Student::select('studentName','studentID','studentPhone','stdemail','stdsupervisor','stdpsmtitle')->where('studentName','LIKE', '%' . $deta . '%')->get();
+        if (count ( $deta ) > 0)
+        return view('\Coordinator\searchstudent', ['deta' => $deta])->with('successMsg','Results Found !');
+        else
+        return view ('\Coordinator\searchstudent', ['deta' => $deta])->with('FailedMsg','No Details found. Try to search again !' );		
+        
+    }
+public function home(request $req)
     {
         $deta = $req->input('detaa'); 
         if ($req->role_type == "student") {
