@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Carnival;
+use App\Models\CarnivalEvaluation;
 
 class CarnivalController extends Controller
 {
@@ -14,7 +15,9 @@ class CarnivalController extends Controller
      */
     public function index()
     {
-        return view('CarnivalEvaluation.index');
+        // dd('masuk.');
+        $carnivals = CarnivalEvaluation::all();
+        return view('CarnivalEvaluation.index', compact('carnivals'));
     }
 
     /**
@@ -35,17 +38,19 @@ class CarnivalController extends Controller
      */
     public function store(Request $request)
     {
-        $carnival = Carnival::create([
-            'coordinatorID' =>$request->coordinatorID,
-            'coordinatorName' =>$request->coordinatorName,
-            'studentID' =>$request->studentID,
-            'studentName' =>$request->studentName,
-            'date'=>$request->date,
-            'appoinmentID'=>$request->appoinmentID,
+        $carnival_evaluation = CarnivalEvaluation::create([
+            'coordinatorID' => $request->coordinatorID,
+            'coordinatorName' => $request->coordinatorName,
+            'studentID' => $request->studentID,
+            'studentName' => $request->studentName,
+            'studentPhone' => $request->studentPhone,
+            'date' => $request->date,
+            'appoinmentID' => $request->appoinmentID,
+            'reason' => $request->reason,
 
 
         ]);
-        return redirect()->route('carnival',['carnival'=>$carnival]);
+        return redirect()->route('CarnivalEvaluation', ['CarnivalEvaluation' => $carnival_evaluation]);
     }
 
     /**
@@ -67,7 +72,8 @@ class CarnivalController extends Controller
      */
     public function edit($id)
     {
-        //
+        $carnival_evaluation = CarnivalEvaluation::find($id);
+        return view('CarnivalEvaluation.edit', compact('carnival_evaluation'));
     }
 
     /**
@@ -77,17 +83,16 @@ class CarnivalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request, CarnivalEvaluation $carnival_evaluation)
     {
-
-        $date = $request->input('date');
-
-
-        DB::table('appoimentID')->where('appoimentID', $appoimentID)
-        ->update(['date' => $request->date]);
+        // dd($carnival_evaluation);
+        $carnival_evaluation->date = $request->date;
+        $carnival_evaluation->reason = $request->reason;
+        $carnival_evaluation->save();
 
 
-    echo "Record updated successfully.<br/>";
+
+        return redirect()->route('CarnivalEvaluation', ['carnival_evaluation' => $carnival_evaluation]);
     }
 
     /**

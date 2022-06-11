@@ -168,6 +168,7 @@ Route::get('/smainpage', function () {
 });
 
 Route::get('/carnival_evaluation', [CarnivalController::class, 'index'])->name('CarnivalEvaluation');
-Route::post('/carnival_evaluations/create', [CarnivalController::class, 'store'])->name('CarnivalEvaluation.store');
+Route::post('/carnival_evaluation/create', [CarnivalController::class, 'store'])->name('CarnivalEvaluation.store');
 Route::get('/carnival_evaluation/create', [CarnivalController::class, 'create'])->name('CarnivalEvaluation.create');
-Route::get('/carnival_evaluation/create', [CarnivalController::class, 'edit'])->name('CarnivalEvaluation.edit');
+Route::get('/carnival_evaluation/edit/{carnival_evaluation}', [CarnivalController::class, 'edit'])->name('CarnivalEvaluation.edit');
+Route::put('/carnival_evaluation/edit/{carnival_evaluation}', [CarnivalController::class, 'update'])->name('CarnivalEvaluation.update');

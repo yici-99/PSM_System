@@ -49,7 +49,7 @@
                 <th>Appoinment ID</th>
                 <th>Reason</th>
             </tr>
-                @foreach ($carnival as $CarnivalEvaluation)
+                @foreach ($carnivals as $CarnivalEvaluation)
                     <tr>
                         <td class="font-bold"> {{ $CarnivalEvaluation->coordinatorID }}</td>
                         <td class="font-bold"> {{ $CarnivalEvaluation->coordinatorName }}</td>
@@ -58,11 +58,12 @@
                         <td class="font-bold"> {{ $CarnivalEvaluation->date }}</td>
                         <td class="font-bold"> {{ $CarnivalEvaluation->appoinmentID }}</td>
                         <td class="font-bold"> {{ $CarnivalEvaluation->reason }}</td>
+                        <td><a class="btn" href="{{ route('CarnivalEvaluation.edit' , ['carnival_evaluation' => $CarnivalEvaluation]) }}">Edit</a></td>
                     </tr>
                 @endforeach
         </table>
         <a class="btn" href="{{ route('CarnivalEvaluation.create') }}">Add</a>
-        {{-- <a class="btn" href="{{ route('carnival.create') }}">Edit</a> --}}
+        {{-- <a class="btn" href="{{ route('CarnivalEvaluation.edit') }}">Edit</a> --}}
     </body>
 
     </html>
