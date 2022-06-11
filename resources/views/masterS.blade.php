@@ -6,11 +6,31 @@
 <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <style>
+  .parent {
+  margin: 1rem;
+  padding: 2rem 2rem;
+  text-align: center;
+}
+.child {
+  height: 300px;
+  width: 40%;
+  display: inline-block;
+  padding: 1rem 1rem;
+  vertical-align: middle;
+}
+.vertical {
+  height: 400px;
+  width: 0.5px;
+  display: inline-block;
+  border: 1px solid gray;
+  vertical-align: middle;
+}
+
 body{
 margin:0;
 padding:0;

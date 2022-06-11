@@ -299,6 +299,7 @@ class EvaluationController extends Controller
         ]);
     }
 
+    //evaluation form of a student
     public function evEdit($resultID, $psmType){
         if($psmType == 'psm1'){
             $result = psm1result::join('students', 'students.studentID', '=', 'psm1result.studentID')
@@ -323,6 +324,7 @@ class EvaluationController extends Controller
         }
     }
 
+    //update evaluation marks into database
     public function updateEvMarks(Request $request, $resultID, $psmType) {
 
         if($psmType == 'psm1'){
