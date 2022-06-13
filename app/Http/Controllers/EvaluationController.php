@@ -14,10 +14,12 @@ use Illuminate\Support\Facades\Mail;
 
 class EvaluationController extends Controller
 {
+    //display deadine
     public function deadline() {
         return view('evaluation.deadline');
     }
 
+    //store deadline into database
     public function storeDeadline() {
 
         $deadline = new Deadline();
@@ -37,6 +39,28 @@ class EvaluationController extends Controller
         return redirect('/deadline')->with('success', 'Deadline has been saved successfully.');
     }
 
+    //evaluation menu
+    public function svMenu() {
+        $deadlinePsm1 = Deadline::select(['deadlines.*'])
+                            ->where('psmType', '=', 'PSM 1')
+                            ->latest('created_at')->first();
+
+        $deadlinePsm2 = Deadline::select(['deadlines.*'])
+                            ->where('psmType', '=', 'PSM 2')
+                            ->latest('created_at')->first();
+
+        $deadlinePta = Deadline::select(['deadlines.*'])
+                            ->where('psmType', '=', 'PTA')
+                            ->latest('created_at')->first();
+
+        return view('/evaluation/svMenu', [
+            'deadlinePsm1' => $deadlinePsm1,
+            'deadlinePsm2' => $deadlinePsm2,
+            'deadlinePta' => $deadlinePta,
+        ]);
+    }
+    
+    //student evaluation list for supervisor
     public function svView(Request $request) {
 
         $deadlinePsm1 = Deadline::select(['deadlines.*'])
@@ -55,37 +79,37 @@ class EvaluationController extends Controller
 
         if($search != ""){
             $psm1marks = psm1result::orderBy('studentID')
-                        ->join('student', 'student.studentID', '=', 'psm1result.studentID')
-                        ->select(['psm1result.*', 'student.studentName', 'student.psmType'])
+                        ->join('students', 'students.studentID', '=', 'psm1result.studentID')
+                        ->select(['psm1result.*', 'students.studentName', 'students.psmType'])
                         ->where("psm1result.studentID", "LIKE", '%'.$search.'%')
                         ->get();
 
             $psm2marks = psm2result::orderBy('studentID')
-                        ->join('student', 'student.studentID', '=', 'psm2result.studentID')
-                        ->select(['psm2result.*', 'student.studentName', 'student.psmType'])
+                        ->join('students', 'students.studentID', '=', 'psm2result.studentID')
+                        ->select(['psm2result.*', 'students.studentName', 'students.psmType'])
                         ->where("psm2result.studentID", "LIKE", '%'.$search.'%')
                         ->get();
 
             $ptamarks = ptaresult::orderBy('studentID')
-                        ->join('student', 'student.studentID', '=', 'ptaresult.studentID')
-                        ->select(['ptaresult.*', 'student.studentName', 'student.psmType'])
+                        ->join('students', 'students.studentID', '=', 'ptaresult.studentID')
+                        ->select(['ptaresult.*', 'students.studentName', 'students.psmType'])
                         ->where("ptaresult.studentID", "LIKE", '%'.$search.'%')
                         ->get();
 
         }else{
             $psm1marks = psm1result::orderBy('studentID')
-                                    ->join('student', 'student.studentID', '=', 'psm1result.studentID')
-                                    ->select(['psm1result.*', 'student.studentName', 'student.psmType'])
+                                    ->join('students', 'students.studentID', '=', 'psm1result.studentID')
+                                    ->select(['psm1result.*', 'students.studentName', 'students.psmType'])
                                     ->get();
 
             $psm2marks = psm2result::orderBy('studentID')
-                                    ->join('student', 'student.studentID', '=', 'psm2result.studentID')
-                                    ->select(['psm2result.*', 'student.studentName', 'student.psmType'])
+                                    ->join('students', 'students.studentID', '=', 'psm2result.studentID')
+                                    ->select(['psm2result.*', 'students.studentName', 'students.psmType'])
                                     ->get();
 
             $ptamarks = ptaresult::orderBy('studentID')
-                                    ->join('student', 'student.studentID', '=', 'ptaresult.studentID')
-                                    ->select(['ptaresult.*', 'student.studentName', 'student.psmType'])
+                                    ->join('students', 'students.studentID', '=', 'ptaresult.studentID')
+                                    ->select(['ptaresult.*', 'students.studentName', 'students.psmType'])
                                     ->get();
         } 
 
@@ -101,30 +125,32 @@ class EvaluationController extends Controller
         ]);
     }
 
+    //evaluation form of a student
     public function svEdit($resultID, $psmType){
         if($psmType == 'psm1'){
-            $result = psm1result::join('student', 'student.studentID', '=', 'psm1result.studentID')
-                                ->select(['psm1result.*', 'student.*'])
+            $result = psm1result::join('students', 'students.studentID', '=', 'psm1result.studentID')
+                                ->select(['psm1result.*', 'students.*'])
                                 ->where('psm1result.resultID', '=', $resultID)
                                 ->first();
             return view('evaluation.svEdit', ['result' => $result]);
         }
         elseif($psmType == 'psm2'){
-            $result = psm2result::join('student', 'student.studentID', '=', 'psm2result.studentID')
-                                ->select(['psm2result.*', 'student.*'])
+            $result = psm2result::join('students', 'students.studentID', '=', 'psm2result.studentID')
+                                ->select(['psm2result.*', 'students.*'])
                                 ->where('psm2result.resultID', '=', $resultID)
                                 ->first();
             return view('evaluation.svEdit', ['result' => $result]);
         }
         else{
-            $result = ptaresult::join('student', 'student.studentID', '=', 'ptaresult.studentID')
-                                ->select(['ptaresult.*', 'student.*'])
+            $result = ptaresult::join('students', 'students.studentID', '=', 'ptaresult.studentID')
+                                ->select(['ptaresult.*', 'students.*'])
                                 ->where('ptaresult.resultID', '=', $resultID)
                                 ->first();
             return view('evaluation.svEdit', ['result' => $result]);
         }
     }
 
+    //update evaluation marks into database
     public function updateSvMarks(Request $request, $resultID, $psmType) {
 
         if($psmType == 'psm1'){
@@ -209,6 +235,7 @@ class EvaluationController extends Controller
         }
     }
 
+    //student evaluation list for evaluator
     public function evView(Request $request) {
 
         $deadlinePsm1 = Deadline::select(['deadlines.*'])
@@ -227,36 +254,36 @@ class EvaluationController extends Controller
 
         if($search != ""){
             $psm1marks = psm1result::orderBy('studentID')
-                                ->join('student', 'student.studentID', '=', 'psm1result.studentID')
-                                ->select(['psm1result.*', 'student.studentName', 'student.psmType'])
+                                ->join('students', 'students.studentID', '=', 'psm1result.studentID')
+                                ->select(['psm1result.*', 'students.studentName', 'students.psmType'])
                                 ->where("psm1result.studentID", "LIKE", '%'.$search.'%')
                                 ->get();
 
             $psm2marks = psm2result::orderBy('studentID')
-                                ->join('student', 'student.studentID', '=', 'psm2result.studentID')
-                                ->select(['psm2result.*', 'student.studentName', 'student.psmType'])
+                                ->join('students', 'students.studentID', '=', 'psm2result.studentID')
+                                ->select(['psm2result.*', 'students.studentName', 'students.psmType'])
                                 ->where("psm2result.studentID", "LIKE", '%'.$search.'%')
                                 ->get();
 
             $ptamarks = ptaresult::orderBy('studentID')
-                                ->join('student', 'student.studentID', '=', 'ptaresult.studentID')
-                                ->select(['ptaresult.*', 'student.studentName', 'student.psmType'])
+                                ->join('students', 'students.studentID', '=', 'ptaresult.studentID')
+                                ->select(['ptaresult.*', 'students.studentName', 'students.psmType'])
                                 ->where("ptaresult.studentID", "LIKE", '%'.$search.'%')
                                 ->get();
         }else{
             $psm1marks = psm1result::orderBy('studentID')
-                                ->join('student', 'student.studentID', '=', 'psm1result.studentID')
-                                ->select(['psm1result.*', 'student.studentName', 'student.psmType'])
+                                ->join('students', 'students.studentID', '=', 'psm1result.studentID')
+                                ->select(['psm1result.*', 'students.studentName', 'students.psmType'])
                                 ->get();
 
             $psm2marks = psm2result::orderBy('studentID')
-                                ->join('student', 'student.studentID', '=', 'psm2result.studentID')
-                                ->select(['psm2result.*', 'student.studentName', 'student.psmType'])
+                                ->join('students', 'students.studentID', '=', 'psm2result.studentID')
+                                ->select(['psm2result.*', 'students.studentName', 'students.psmType'])
                                 ->get();
 
             $ptamarks = ptaresult::orderBy('studentID')
-                                ->join('student', 'student.studentID', '=', 'ptaresult.studentID')
-                                ->select(['ptaresult.*', 'student.studentName', 'student.psmType'])
+                                ->join('students', 'students.studentID', '=', 'ptaresult.studentID')
+                                ->select(['ptaresult.*', 'students.studentName', 'students.psmType'])
                                 ->get();
         }
 
@@ -272,30 +299,32 @@ class EvaluationController extends Controller
         ]);
     }
 
+    //evaluation form of a student
     public function evEdit($resultID, $psmType){
         if($psmType == 'psm1'){
-            $result = psm1result::join('student', 'student.studentID', '=', 'psm1result.studentID')
-                                ->select(['psm1result.*', 'student.*'])
+            $result = psm1result::join('students', 'students.studentID', '=', 'psm1result.studentID')
+                                ->select(['psm1result.*', 'students.*'])
                                 ->where('psm1result.resultID', '=', $resultID)
                                 ->first();
             return view('evaluation.evEdit', ['result' => $result]);
         }
         elseif($psmType == 'psm2'){
-            $result = psm2result::join('student', 'student.studentID', '=', 'psm2result.studentID')
-                                ->select(['psm2result.*', 'student.*'])
+            $result = psm2result::join('students', 'students.studentID', '=', 'psm2result.studentID')
+                                ->select(['psm2result.*', 'students.*'])
                                 ->where('psm2result.resultID', '=', $resultID)
                                 ->first();
             return view('evaluation.evEdit', ['result' => $result]);
         }
         else{
-            $result = ptaresult::join('student', 'student.studentID', '=', 'ptaresult.studentID')
-                                ->select(['ptaresult.*', 'student.*'])
+            $result = ptaresult::join('students', 'students.studentID', '=', 'ptaresult.studentID')
+                                ->select(['ptaresult.*', 'students.*'])
                                 ->where('ptaresult.resultID', '=', $resultID)
                                 ->first();
             return view('evaluation.evEdit', ['result' => $result]);
         }
     }
 
+    //update evaluation marks into database
     public function updateEvMarks(Request $request, $resultID, $psmType) {
 
         if($psmType == 'psm1'){

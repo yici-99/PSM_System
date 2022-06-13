@@ -1,4 +1,4 @@
-@extends ('masterC')
+@extends ('masterStu')
 @section('content')
 
 <!DOCTYPE html>
@@ -46,7 +46,7 @@ height:25px;
 <h3 style="color:orange;font-size:39px;text-align:center;margin-top:-6%;">Supervisor's Profile</h3>
 <br><br><br><br><br><br>
 @foreach($result as $detaa)
-<form action="/searchsvlist"  method='get'>
+<form action="/searchsupervisor"  method='get'>
     @csrf
 <table>
     <tr>
@@ -97,9 +97,7 @@ height:25px;
 
 </table>
 <br><br>
-@endforeach
-<input type="submit" class="b b1" value="EDIT" style="width:100px;margin-left:1000px;"></a>
-<button onclick="location.href='{{ url('/searchsvlist') }}'" type="submit" class="b b1" value="DeBack" style="width:80px;height: 40px;margin-right:1%;">BACK</button>
+<button onclick="location.href='{{ url('/searchsupervisor') }}'" type="submit" class="b b1" value="DeBack" style="width:80px;height: 40px;margin-right:1%;">BACK</button>
 <br><br>
 </form>
 </html>

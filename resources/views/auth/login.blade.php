@@ -37,10 +37,11 @@
             <div class="mt-4">
                 <x-label for="role" :value="__('Select Role Type:')" />
                     <select id="role" name="role" required>
-                    <option value="student">Student</option>
-                    <option value="supervisor">Supervisor</option>
-                    <option value="coordiantor">Coordiantor</option>
+                    <option value="student">student</option>
+                    <option value="supervisor">supervisor</option>
+                    <option value="coordiantor">coordiantor</option>
                     </select>
+
 
 
             </div>
@@ -61,7 +62,7 @@
                 @endif
 
                 <x-button class="ml-3">
-                    {{ __('Log in') }}
+                    {{ __('login') }}
                 </x-button>
             </div>
         </form>

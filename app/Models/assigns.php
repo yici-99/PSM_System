@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class supervisor extends Model
+class assigns extends Model
 {
     use HasFactory;
+    protected $fillable = ['studentID','studentName','studentTitle','indusName','reason'];
     public $timestamps = false;
-    protected $primaryKey = 'supervisorID';
 }

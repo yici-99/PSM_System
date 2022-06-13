@@ -243,7 +243,6 @@ font-size: 18px;
     <!--right-->
     <div class="topnav">
         <a class="button" href="/">Logout</a>
-        <a class="button" href="/reportS">Report</a>
         <a class="button" href="">Rubric</a>
         <a class="button" href="/searchsupervisor">Supervisor's Profile</a>
     </div>
@@ -260,9 +259,9 @@ function checklogout(){
 
 </center>
 
-<a href="{{$detaa->studentName}}"><i class="far fa-id-card"></i></a>
-<a href="{{$detaa->studentPhone}}"><i class="fas fa-phone"></i></a>
-<a href="{{$detaa->stdemail}}"><i class="fas fa-envelope-open-text"></i></a>
+<a href=""><i class="far fa-id-card"></i></a>
+<a href=""><i class="fas fa-phone"></i></a>
+<a href=""><i class="fas fa-envelope-open-text"></i></a>
 <div style="background-color:#000000; height:3px;"></div>
   <a href="/Student/editprofile"><i class="fas fa-folder-open"></i></a>
   <a href="#" onclick="return checklogout()"><i  class="fas fa-door-open"></i><span>Logout</span></a>

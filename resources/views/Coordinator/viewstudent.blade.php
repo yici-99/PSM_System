@@ -41,7 +41,7 @@ margin-left:200px;
 <h3 style="color:orange;font-size:39px;text-align:center;margin-top:-6%;">Student's Profile</h3>
 <br><br><br><br><br><br>
 @foreach($result as $detaa)
-<form action="/updatestudent/{{ $detaa->studentID}}" method='get'>
+<form action="/searchstudent" method='get'>
     @csrf
 <table>
     <tr>
@@ -97,7 +97,8 @@ margin-left:200px;
 
 </table>
 <br><br>
-<button onclick="location.href='{{ url('/updatestudent') }}'" class="b b1" value="Edit" style="width:100px;margin-left:1000px;height: 50px;">EDIT</button>
+<button onclick="location.href='{{ url('/updatestudent') }}'" class="b b1" value="Edit" style="width:80px;height: 40px;margin-left:800px;">EDIT</button>
+<button onclick="location.href='{{ url('/searchstudent') }}'"  class="b b1" value="Back" style="width:80px;height: 40px;margin-right:1%;">BACK</button>
 <br><br>
 </form>
 </html>

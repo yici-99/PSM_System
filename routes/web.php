@@ -2,11 +2,14 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EvaluationController;
-
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\reportController;
 use Illuminate\Support\Facades\Mail;
 use App\Models\Deadline;
 use App\Http\Controllers\usercontroller;
+use App\Http\Controllers\supervisorcontroller;
+use App\Http\Controllers\studentcontroller;
+use App\Http\Controllers\Top20;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,7 +31,7 @@ Route::get('/masterS', function () {
     return view('masterS');
 });
 
-Route::post('/masterStu', function () {
+Route::get('/masterStu', function () {
     return view('masterStu');
 });
 
@@ -36,32 +39,19 @@ Route::get('/masterC', function () {
     return view('masterC');
 });
 
-Route::get('/', function () {
+Route::get('/home', function () {
     return view('home');
 });
+Route::get('/', function () {
+    return view('welcome');
+});
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
 
 //Manage Evaluation
-Route::get('/svMenu', function () {
-
-    $deadlinePsm1 = Deadline::select(['deadlines.*'])
-                            ->where('psmType', '=', 'PSM 1')
-                            ->latest('created_at')->first();
-
-    $deadlinePsm2 = Deadline::select(['deadlines.*'])
-                            ->where('psmType', '=', 'PSM 2')
-                            ->latest('created_at')->first();
-
-    $deadlinePta = Deadline::select(['deadlines.*'])
-                            ->where('psmType', '=', 'PTA')
-                            ->latest('created_at')->first();
-
-    return view('/evaluation/svMenu', [
-        'deadlinePsm1' => $deadlinePsm1,
-        'deadlinePsm2' => $deadlinePsm2,
-        'deadlinePta' => $deadlinePta,
-    ]);
-});
+Route::get('/svMenu', [EvaluationController::class, 'svMenu']);
 
 Route::get('/svView', [EvaluationController::class, 'svView']);
 Route::get('/deadline', [EvaluationController::class, 'deadline']);
@@ -82,8 +72,17 @@ Route::post('/updateEvMarks/{resultID}/{psmType}', [EvaluationController::class,
 
 //Generate Top 20
 Route::get('/main', function () {
-    return view('ResultMain');
+    return view('Top_20_students.ResultMain');
 });
+
+Route::get('/assign_industry', function () {
+    return view('Top_20_students.assign_indus');
+});
+ 
+
+Route::get('/studentresult','App\Http\Controllers\Top20@show');
+Route::post('/assign_industry/add','App\Http\Controllers\Top20@add');
+Route::get('/studentresult/top20','App\Http\Controllers\Top20@order');
 
 //Generate Report
 Route::get('/reportMainC', function () {
@@ -121,6 +120,9 @@ Route::get('/searcsupervisor', function () {
 });
 
 Route::get('/editprofile', 'App\Http\Controllers\usercontroller@home');
+Route::get('/searchsupervisor', 'App\Http\Controllers\studentcontroller@svlist');
+Route::get('/searchsupervisor/search', 'App\Http\Controllers\studentcontroller@searchsupervisor');
+Route::get('/svprofile/{supervisorID}', 'App\Http\Controllers\studentcontroller@svprofile');
 
 
 
@@ -146,6 +148,8 @@ Route::get('/createsvprofile', function () {
 Route::post('/createsv', 'App\Http\Controllers\usercontroller@createsupervisor');
 Route::get('/searchsvlist', 'App\Http\Controllers\usercontroller@viewsvlist');
 Route::get('/searchsvlist/search', 'App\Http\Controllers\usercontroller@searchsv');
+Route::get('/viewsvprofile/{supervisorID}', 'App\Http\Controllers\usercontroller@viewsvprofile');
+Route::get('/searchsvlist/{supervisorID}', 'App\Http\Controllers\usercontroller@deletesvprofile');
 
 
 //Manage Supervisor
@@ -168,4 +172,9 @@ Route::get('/smainpage', function () {
         'deadlinePsm2' => $deadlinePsm2,
         'deadlinePta' => $deadlinePta,
     ]);
+
 });
+
+Route::get('/searchstudentlist', 'App\Http\Controllers\supervisorcontroller@studentlist');
+Route::get('/searchstudentlist/search', 'App\Http\Controllers\supervisorcontroller@studentprofile');
+Route::get('/viewstudentprofile/{studentID}', 'App\Http\Controllers\supervisorcontroller@viewprofile');
