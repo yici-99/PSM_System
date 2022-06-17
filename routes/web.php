@@ -187,3 +187,59 @@ Route::get('/svmyprofile', function () {
     return view('/supervisor/svmyprofile');
 });
 Route::get('/svmyprofile', 'App\Http\Controllers\supervisorcontroller@svmyprofile');
+
+
+Route::get('/updateRubric', function () {
+    return view('/rubric/updateRubric');
+});
+
+
+Route::get('/updateRubric/{rubricID}', 'App\Http\Controllers\rubricController@showUpdate');
+//Route::get('/updateRubric/{rubricID}', [rubricController::class, 'showUpdate']);
+
+//Route::post('editrubric', [rubricController::class, 'updateData']);
+
+
+Route::get('/addRubric', function () {
+    return view('/rubric/addRubric');
+});
+
+Route::post('addrubric','App\Http\Controllers\rubricController@saveData');
+
+Route::post('editrubric','App\Http\Controllers\rubricController@updateData');
+
+Route::get('/evaRubric', function () {
+    return view('/rubric/evaRubric');
+});
+
+
+Route::get('/viewRubric', function () {
+    return view('/rubric/viewRubric');
+});
+
+Route::get('/svRubric', function () {
+    return view('/rubric/svRubric');
+});
+
+Route::get('/studentRubric', function () {
+    return view('/rubric/studentRubric');
+});
+
+
+
+//Route::get('/viewRubric', 'App\Http\Controllers\rubricController@display') ;
+Route::get('/viewRubric', [rubricController::class, 'display']);
+Route::get('/svRubric', [rubricController::class,'svDisplay']);
+//Route::get('/svRubric', 'App\Http\Controllers\rubricController@svDisplay') ;
+
+Route::get('/studentRubric', 'App\Http\Controllers\rubricController@stuDisplay') ;
+
+
+Route::get('/viewRubric/{rubricID}', 'App\Http\Controllers\rubricController@delete');
+Route::post('searchrubric','App\Http\Controllers\rubricController@findRubric');
+Route::post('searchSVrubric','App\Http\Controllers\rubricController@findSVRubric');
+Route::post('searchSTrubric','App\Http\Controllers\rubricController@findSTRubric');
+
+
+
+
