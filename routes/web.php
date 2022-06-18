@@ -11,6 +11,7 @@ use App\Http\Controllers\supervisorcontroller;
 use App\Http\Controllers\studentcontroller;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Top20;
+use App\Http\Controllers\rubricController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
