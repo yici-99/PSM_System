@@ -242,7 +242,7 @@ font-size: 18px;
 </div>
     <!--right-->
     <div class="topnav">
-        <a class="button" href="">Rubric</a>
+        <a class="button" href="/studentRubric">Rubric</a>
         <a class="button" href="/searchsupervisor">Supervisor's Profile</a>
     </div>
 </header>
