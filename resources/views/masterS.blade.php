@@ -265,7 +265,7 @@ font-size: 18px;
     <!--right-->
     <div class="topnav"> 
         <a class="button" href="/studentListS">Report</a>
-        <a class="button" href="">Rubric</a>
+        <a class="button" href="/svRubric">Rubric</a>
         <a class="button" href="{{ url('svMenu') }}">Evaluation</a>   
         <a class="button" href="/studentresult">Generate Top 20</a>
         <a class="button" href="/searchstudentlist">Student's Profile</a>
