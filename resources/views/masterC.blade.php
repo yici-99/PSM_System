@@ -243,7 +243,7 @@ font-size: 18px;
     <!--right-->
     <div class="topnav">
         <a class="button" href="/reportMainC">Generate Report</a>
-        <a class="button" href="">Rubric</a>
+        <a class="button" href="/viewRubric">Rubric</a>
         <a class="button" href="deadline">Deadline</a>
         <a class="button" href="/searchsvlist">Supervisor's Profile</a>
         <a class="button" href="/searchstudent">Student's Profile</a>
